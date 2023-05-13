@@ -1,4 +1,13 @@
-# Ghost Starter Theme
+# Twenty Nineteen Ghost
+
+This is a [Ghost](https://ghost.org) port of WordPress's [Twenty Nineteen](https://wordpress.org/themes/twentynineteen/) theme.
+Ghost theme development scaffolding uses [Ghost-theme-starter](https://github.com/royalfig/ghost-theme-starter), thanks to @royalfig for the tool.
+
+## Highlights
+
+- waiting for perfection
+
+## Installation
 
 - To get started, click `Use this template` and clone the repo
 - CD into the directory
@@ -31,3 +40,16 @@ npm run zip
 # Scan your theme for potential incompatibilties with gscan
 npm run check
 ```
+
+## Differences from original theme
+- The comment system uses [twikoo](https://twikoo.js.org)
+- waiting for perfection
+
+
+## Available Site Params
+- waiting for perfection
+
+
+## Social 
+- waiting for perfection
+
