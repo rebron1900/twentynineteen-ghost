@@ -6,12 +6,13 @@
 这是Wordprss主题[Twenty Nineteen](https://wordpress.org/themes/twentynineteen/) [Ghost](https://ghost.org) 的复刻版.
 Ghost主题开发脚手架使用了[Ghost-theme-starter](https://github.com/royalfig/ghost-theme-starter)，感谢 @royalfig 的工具。
 
-## Highlights
+## 亮点
 
 - 等待完善
 
-## Installation
+## 安装
 
+一、 手动编译
 - 克隆主题，并进入主题根目录
 - 安装包文件
 
@@ -19,7 +20,12 @@ Ghost主题开发脚手架使用了[Ghost-theme-starter](https://github.com/roya
 npm install
 ```
 
-- 启动主题开发模式 (`ghost start -d`)
+- 执行发布命令
+- 复制 `disk` 目录下的 `theme.zip` 文件，并上传至Ghost博客中。
+
+二、 直接下载
+- 点击右侧 `Releases` 下载主题包
+- 上传至Ghost博客中。
 
 ## 开发命令
 
