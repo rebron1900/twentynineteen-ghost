@@ -15,7 +15,6 @@
 }
 
 // Font and typographic variables
-
 $font__body: "NonBreakingSpaceOverride", "Hoefler Text", Garamond, "Times New Roman", serif;
 $font__heading: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
 $font__fallbacks: (
@@ -39,11 +38,11 @@ $font__fallbacks: (
 	tt-RU: '"Helvetica Neue", Helvetica, "Segoe UI", Arial, sans-serif',
 	uk: '"Helvetica Neue", Helvetica, "Segoe UI", Arial, sans-serif',
 	/* Chinese (Hong Kong) */
-	zh-HK: '-apple-system, BlinkMacSystemFont, "PingFang HK", "Helvetica Neue", "Microsoft YaHei New", STHeiti Light, sans-serif',
+	zh-HK: '-apple-system,BlinkMacSystemFont,"PingFang SC","Helvetica Neue","Microsoft YaHei New",STHeiti Light,sans-serif',
 	/* Chinese (Taiwan) */
-	zh-TW: '-apple-system, BlinkMacSystemFont, "PingFang TC", "Helvetica Neue", "Microsoft YaHei New", STHeiti Light, sans-serif',
+	zh-TW: '-apple-system,BlinkMacSystemFont,"PingFang SC","Helvetica Neue","Microsoft YaHei New",STHeiti Light,sans-serif',
 	/* Chinese (China) */
-	zh-CN: '-apple-system, BlinkMacSystemFont, "PingFang SC", "Helvetica Neue", "Microsoft YaHei New", STHeiti Light, sans-serif',
+	zh: '-apple-system,BlinkMacSystemFont,"PingFang SC","Helvetica Neue","Microsoft YaHei New",STHeiti Light,sans-serif',
 	/* Devanagari */
 	bn-BD: 'Arial, sans-serif',
 	hi-IN: 'Arial, sans-serif',
