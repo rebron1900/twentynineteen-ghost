@@ -1,3 +1,6 @@
+[中文介绍](https://github.com/rebron1900/twentynineteen-ghost/blob/master/README-ZH.md) | [English](https://github.com/rebron1900/twentynineteen-ghost/blob/master/README.md)
+
+
 # Twenty Nineteen Ghost
 
 This is a [Ghost](https://ghost.org) port of WordPress's [Twenty Nineteen](https://wordpress.org/themes/twentynineteen/) theme.

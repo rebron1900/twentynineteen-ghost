@@ -1,3 +1,6 @@
+[中文介绍](https://github.com/rebron1900/twentynineteen-ghost/blob/master/README-ZH.md) | [English](https://github.com/rebron1900/twentynineteen-ghost/blob/master/README.md)
+
+
 # 二〇一九 Ghost 版
 
 这是Wordprss主题[Twenty Nineteen](https://wordpress.org/themes/twentynineteen/) [Ghost](https://ghost.org) 的复刻版.
