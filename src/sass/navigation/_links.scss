@@ -1,0 +1,22 @@
+a {
+
+	@include link-transition;
+	color: var(--color__link);
+
+	&:visited {
+		color: var(--color__link)-visited;
+	}
+
+	&:hover,
+	&:active {
+		color: var(--color__link)-hover;
+		outline: 0;
+		text-decoration: none;
+	}
+
+	&:focus {
+		outline: thin dotted;
+		text-decoration: underline;
+		text-decoration-thickness: 2px;
+	}
+}

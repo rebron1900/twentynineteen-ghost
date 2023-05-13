@@ -1,0 +1,74 @@
+/* Bookmark card */
+/* stylelint-disable-next-line selector-no-qualifying-type */
+.kg-bookmark-card a.kg-bookmark-container {
+  border-color: var(--color__border);
+  border-radius: 5%;
+  transition: border-color 0.3s;
+}
+
+.kg-bookmark-card .kg-bookmark-icon {
+  margin-inline: 0 6px;
+}
+
+.kg-bookmark-title {
+	font-size: $font__size_base !important;
+}
+
+.kg-bookmark-content {
+  padding: 1rem;
+}
+
+.kg-bookmark-description {
+	font-size: $font__size_base !important;
+  color: var(--element-light);
+}
+
+.kg-bookmark-metadata {
+	font-size: $font__size_base !important;
+}
+
+/* stylelint-disable-next-line selector-no-qualifying-type */
+.kg-bookmark-card:hover a.kg-bookmark-container {
+  border-color: var(--color__text-light);
+  border-radius: 5%;
+}
+
+/* Toggle card */
+.kg-toggle-card {
+  padding: 1rem;
+  border: 1px solid var(--color__border);
+  border-radius: 5%;
+  box-shadow: none;
+}
+
+
+/* Button */
+.kg-button-card {
+  font-family: inherit;
+  font-weight: 700;
+  text-transform: uppercase;
+  border-radius: 5%;
+}
+
+.kg-btn {
+  height: initial;
+  border-radius: 5%;
+}
+
+.kg-btn-accent {
+  color: var(--color__text-main);
+  background-color: var(--color__text-screen);
+  transition: background-color 0.3s;
+}
+
+.kg-btn-accent:hover {
+  background-color: var(--color__border-button-hover);
+  opacity: 1;
+}
+
+/* Callout card */
+.kg-callout-card {
+  padding: 1rem;
+  background-color: var(--color__border);
+  border-radius: 5%;
+}

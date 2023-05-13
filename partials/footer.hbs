@@ -1,3 +1,25 @@
-<footer>
-    {{navigation type="secondary"}}
-</footer>
+	<footer id="colophon" class="site-footer">
+		{{> "footer/footer-widgets"  }}
+
+		<div class="site-info">
+			<a class="site-name" href="{{@site.url}}" rel="home">{{@site.title}}</a>,
+			<a href="https://ghost.org" class="imprint">
+				Proudly powered by Ghost
+			</a>
+
+			{{!-- {{ with .Site.Params.privacy_link }} --}}
+			<a href="#" class="privacy-policy-link">Privacy Policy</a><span role="separator" aria-hidden="true"></span>
+			{{!-- {{ end }} --}}
+
+			<nav class="footer-navigation" aria-label="Footer Menu">
+				<ul id="menu-footer" class="footer-menu">
+					{{#foreach navigation}}
+					<li class="menu-item {{slug}} {{#if current}}sm-nav-current{{/if}}">
+					<a href="{{url}}">{{label}}</a>
+					</li>
+					{{/foreach}}
+				{{ end }}
+				</ul>
+			</nav><!-- .footer-navigation -->
+		</div><!-- .site-info -->
+	</footer><!-- #colophon -->

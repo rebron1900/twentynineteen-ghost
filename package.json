@@ -1,17 +1,16 @@
 {
-  "name": "ghost-theme-starter",
+  "name": "twentynineteen-ghost",
   "version": "1.0.1",
-  "description": "A Ghost theme starter",
+  "description": "A Ghost theme port from Wordpress",
   "engines": {
-    "ghost": ">=4.0.0",
-    "ghost-api": "v4"
+    "ghost": ">=4.0.0"
   },
   "main": "'src/index.js'",
   "scripts": {
     "reload": "node utils/reload",
     "dev": "npm run reload & npm run watch",
-    "watch": "NODE_ENV=development rollup -c -w",
-    "build": "NODE_ENV=production rollup -c",
+    "watch": "rollup -c --environment NODE_ENV:development  -w",
+    "build": "rollup -c --environment NODE_ENV:production",
     "zip": "npm run build && node utils/zip",
     "check": "gscan .",
     "css": "npx stylelint 'src/css/**/*.css' --fix"
@@ -26,6 +25,7 @@
   },
   "license": "MIT",
   "config": {
+    "card_assets": true,
     "posts_per_page": 15,
     "image_sizes": {
       "xxs": {
@@ -48,6 +48,28 @@
       },
       "xxl": {
         "width": 2000
+      }
+    },
+    "custom": {
+      "hero_title": {
+        "type": "text",
+        "group": "homepage"
+      },
+      "hero_description": {
+        "type": "text",
+        "group": "homepage"
+      },
+      "hero_image": {
+        "type": "image",
+        "group": "homepage"
+      },
+      "color_mode": {
+        "type": "select",
+        "options": [
+          "light",
+          "dark"
+        ],
+        "default": "light"
       }
     }
   },

@@ -1,1 +1,1 @@
-{"version":3,"file":"post.js","sources":[],"sourcesContent":[],"names":[],"mappings":";;;;;;;"}
+{"version":3,"file":"post.js","sources":["../../src/js/post/index.js"],"sourcesContent":["// Ship JS only active on post pages for better performance\r\ntwikoo.init({ envId: 'https://comment.1900.live', el: '.tk-comments' })"],"names":["twikoo","init","envId","el"],"mappings":";;;CAAA;CACAA,MAAM,CAACC,IAAP,CAAY;CAAEC,EAAAA,KAAK,EAAE,2BAAT;CAAsCC,EAAAA,EAAE,EAAE,cAAA;CAA1C,CAAZ,CAAA;;;;;;"}

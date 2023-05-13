@@ -1,0 +1,18 @@
+<nav class="navigation pagination" role="navigation">
+  <h2 class="screen-reader-text">Posts navigation</h2>
+  <div class="nav-links">
+    {{#if prev}}
+      <a class="prev page-numbers" href="{{page_url prev}}">
+        {{> "icons/ui/chevron-left" }}
+        <span class="nav-prev-text">Newer posts</span>
+      </a>
+    {{/if}}
+
+    {{#if next}}
+      <a class="next page-numbers" href="{{page_url next}}">
+        <span class="nav-next-text">Older posts</span>
+        {{> "icons/ui/chevron-right" }}
+      </a>
+    {{/if}}
+  </div>
+</nav>

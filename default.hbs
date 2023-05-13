@@ -1,39 +1,53 @@
-<!DOCTYPE html>
-<html lang="{{@site.locale}}">
-    <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>{{meta_title}}</title>
+<!doctype html>
+<html lang="{{@site.locale}}"  data-color-pref="{{@custom.color_mode}}" data-accent-color="{{@site.accent_color}}">
+<head>
+	<meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  
+  <title>{{meta_title}}</title>
 
-        {{!-- CSS and JS with asset helper--}}
-        <link rel="stylesheet" href="{{asset "built/app.css"}}" />
-        <script src="{{asset "built/app.js"}}" defer></script>
+  <link rel="stylesheet" href="{{asset 'built/app.css'}}">
+  <link rel="preload" href="{{asset 'fonts/NonBreakingSpaceOverride.woff'}}" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" type="text/css" href="{{asset 'built/cards.min.css' }}">
+  <script defer="" src="{{asset 'built/cards.min.js' }}"></script>
 
-        {{!-- contentFor/block scripts - use with defer --}}
-        {{{block "scripts"}}}
-        
-        {{!-- Outputs important meta data and settings, should always be in <head> --}}
-        {{ghost_head}}
-    </head>
 
-    <body class="{{body_class}}">
-        
-        <div class="grid">
-            {{!-- Navbar partial --}}
-            {{> "navbar"}}
-        </div>
+  {{!-- Output SEO + Meta data and other settings by Ghost --}}
+  {{ghost_head}}
+  
+</head>
 
-        <main id="theme-main">
-            {{!-- All content gets inserted here, index.hbs, post.hbs, etc --}}
-            {{{body}}}
+{{!-- {{ if not .Site.Params.disable_image_filters }}image-filters-enabled{{ end }}  --}}
+<body class="{{body_class}} archive">
+  <div id="page" class="site">
+    <a class="skip-link screen-reader-text" href="#content">Skip to content</a>
+
+    {{!-- {{ if .Params.image }}featured-image{{ end }} --}}
+    <header id="masthead" class="site-header ">
+      <div class="site-branding-container">
+        {{> "header/site-branding" }}
+      </div><!-- .layout-wrap -->
+
+      {{> "header/entry-header" }}
+        <!-- For single posts and pages, special treatment if there's a featured image -->
+      {{ end }}
+    </header><!-- #masthead -->
+
+    <div id="content" class="site-content">
+      <section id="primary" class="content-area">
+        <main id="main" class="site-main">
+          {{{body}}}                                                                                                                       
         </main>
+      </section>
+    </div>
 
-        <div class="grid">
-            {{!-- Navbar partial --}}
-            {{> "footer"}}
-        </div>
+    {{> "footer" }}
+    
+  </div>
 
-        {{!-- Outputs important scripts - should always be included before closing body tag --}}
-        {{ghost_foot}}
-    </body>
+  {{ghost_foot}}
+  <script src="https://cdn.staticfile.org/twikoo/1.6.16/twikoo.all.min.js"></script>
+  <script src="{{asset 'built/post.js'}}"></script>
+  
+</body>
 </html>

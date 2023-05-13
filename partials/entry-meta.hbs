@@ -1,0 +1,19 @@
+<span class="byline">
+  {{> "icons/ui/author"}}
+  <span class="screen-reader-text">发布者：</span>{{authors separator=" , "}}
+</span>
+
+
+<span class="posted-on">
+  {{> "icons/ui/watch" }}
+  <time datetime="{{date format=" YYYY-MM-DD"}}">{{date}}</time>
+</span>
+
+
+<span class="tags-links">
+  {{> "icons/ui/tag" }}
+  <span class="screen-reader-text">Posted in</span>
+  {{#if tags}}
+  {{tags separator=" , "}}
+  {{/if}}
+</span>

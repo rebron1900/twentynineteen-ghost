@@ -1,0 +1,30 @@
+{{ define "entry_header" }}
+  {{ if .Params.image }}
+    <div class="site-featured-image">
+      <figure class="post-thumbnail">
+        <img src="{{ .Params.image }}" />
+      </figure>
+      <div class="entry-header">
+        <h1 class="entry-title">{{ .Title }}</h1>
+        <div class="entry-meta">
+          {{ partial "entry-meta" . }}
+        </div>
+      </div>
+    </div>
+  {{ end }}
+{{ end }}
+
+{{ define "main" }}
+  <article class="post entry">
+    {{ if (not (isset .Params "image")) }}
+      <header class="entry-header">
+        <h1 class="entry-title">{{ .Title }}</h1>
+      </header>
+    {{ end }}
+    <div class="entry-content">
+      {{ .Content }}
+    </div>
+    <div class="entry-footer">
+    </div>
+  </article>
+{{ end }}

@@ -1,4 +1,4 @@
-/* 
+/*
 Use this script to create a zip file of your theme. Add or remove files you want to include.
 */
 const AdmZip = require('adm-zip');
@@ -10,9 +10,9 @@ zip.addLocalFolder('./assets', 'assets');
 zip.addLocalFolder('./partials', 'partials');
 
 // Files
-zip.addLocalFile('./author.hbs');
+// zip.addLocalFile('./author.hbs');
 zip.addLocalFile('./default.hbs');
-// zip.addLocalFile('./error-404.hbs');
+zip.addLocalFile('./error.hbs');
 // zip.addLocalFile('./home.hbs');
 zip.addLocalFile('./index.hbs');
 zip.addLocalFile('./package.json');

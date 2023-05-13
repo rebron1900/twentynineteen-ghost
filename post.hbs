@@ -2,18 +2,46 @@
 {{!< default}}
 
 {{#post}}
+  <article class="post entry">
+    {{#if feature_image}}
+      <figure class="post-thumbnail">
+        <a class="post-thumbnail-inner" href=""{{url}}" aria-hidden="true">
+          <img src="{{img_url feature_image size="528"}}"  alt="{{#if feature_image_alt}}{{feature_image_alt}}{{else}}{{title}}{{/if}}" />
+        </a>
+      </figure>
+    {{/if}}
+    <header class="entry-header">
+    <h1 class="entry-title">{{title}}</h1>
+    <div class="entry-meta">
+        {{> "entry-meta" }}
+    </div>
+    </header>
+    <div class="entry-content">
+      {{content}}
+    </div>
+  </article>
 
-<header class="grid">
-    <h1>{{title}}</h1>
-</header>
 
-<article class="{{post_class}}">
-    {{content}}
-</article>
+  <nav class="navigation pagination" role="navigation">
+    <h2 class="screen-reader-text">Posts navigation</h2>
+    <div class="nav-links">
+      {{#next_post}}
+        <a class="prev page-numbers" href="{{url}}">
+          {{> "icons/ui/chevron-left" }}
+          <span class="nav-prev-text">Newer posts</span>
+        </a>
+      {{/next_post}}
 
+      
+      {{#prev_post}}
+        <a class="next page-numbers" href="{{url}}">
+          <span class="nav-next-text">Older posts</span>
+          {{> "icons/ui/chevron-right" }}
+        </a>
+      {{/prev_post}}
+      
+    </div>
+  </nav>
+
+  {{> "posts/comments" }}
 {{/post}}
-
-
-{{#contentFor 'scripts'}}
-    <script src="{{asset 'built/post.js'}}" defer></script>
-{{/contentFor}}
