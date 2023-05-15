@@ -204,10 +204,10 @@
 
 				&:hover,
 				&:focus {
-					background: var(--color__link)-hover;
+					background: var(--color__link);
 
 					&:after {
-						background: var(--color__link)-hover;
+						background: var(--color__link);
 					}
 				}
 			}

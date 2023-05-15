@@ -9,7 +9,7 @@
   "scripts": {
     "dev": "rollup -c --environment BUILD:development -w",
     "build": "rollup -c --environment BUILD:production",
-    "zip": "npm run build && bestzip twentynineteen-ghost.zip assets/* partials/* members/* *.hbs package.json",
+    "zip": "npm run build && bestzip dist/twentynineteen-ghost.zip assets/* partials/* members/* *.hbs package.json",
     "test": "npx gscan .",
     "pretest": "npm run build"
   },

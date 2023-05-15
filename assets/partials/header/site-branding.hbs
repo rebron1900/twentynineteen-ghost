@@ -1,0 +1,44 @@
+<div class="site-branding">
+  {{#if @site.logo }}
+  <div class="site-logo">
+    <a href="{{@site.url}}" class="custom-logo-link" rel="{{@site.title}}" aria-current="page">
+    <img  src="{{@site.logo}}" /></a>
+  </div>
+  {{/if}}
+  <h1 class="site-title">
+    <a href="{{@site.url}}" rel="home">{{@site.title}}</a>
+  </h1>
+
+  <p class="site-description">
+    {{@site.description}}
+  </p>
+
+
+  <nav id="site-navigation" class="main-navigation" aria-label="Top Menu">
+    <div class="menu-main-container">
+      <ul id="menu-main" class="main-menu">
+        {{!-- {{ if .HasChildren }}
+        <li class="menu-item menu-item-has-children {{ if $currentPage.IsMenuCurrent " main" . }}active{{ end }}">
+          <a href="{{ .URL }}" aria-haspopup="true" aria-expanded="false">{{ .Name }}</a>
+          <button class="submenu-expand" tabindex="-1">
+            {{ partial "icons/ui/keyboard-arrow-down" }}
+          </button>
+          <ul class="sub-menu">
+            {{ range .Children }}
+            <li class="menu-item {{ if $currentPage.IsMenuCurrent " main" . }}active{{ end }}">
+              <a href="{{ .URL }}">{{ .Name }}</a>
+            </li>
+            {{ end }}
+          </ul>
+        </li>
+        {{ else }} --}}
+        {{navigation}}
+        {{!-- {{ end }} --}}
+        
+      </ul>
+    </div>
+  </nav>
+
+  {{> "header/social-link" }}
+
+</div>

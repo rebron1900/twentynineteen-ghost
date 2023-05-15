@@ -34,7 +34,7 @@
 
 		a {
 			.meta-nav {
-				color: var(--color__text-light);
+				color: var(--element-light);
 				user-select: none;
 
 				&:before,
@@ -42,7 +42,7 @@
 					display: none;
 					content: "—";
 					width: 2em;
-					color: var(--color__text-light);
+					color: var(--element-light);
 					height: 1em;
 				}
 			}
@@ -52,7 +52,7 @@
 			}
 
 			&:hover {
-				color: var(--color__link-hover);
+				color: var(--primary-light);
 			}
 		}
 

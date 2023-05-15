@@ -4,12 +4,12 @@ a {
 	color: var(--primary);
 
 	&:visited {
-		color: var(--primary-dark)-visited;
+		color: var(--primary);
 	}
 
 	&:hover,
 	&:active {
-		color: var(--primary-dark)-hover;
+		color: var(--primary-dark);
 		outline: 0;
 		text-decoration: none;
 	}

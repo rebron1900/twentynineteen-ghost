@@ -25,6 +25,34 @@
 	}
 }
 
+
+@mixin mediamax( $res ) {
+	@if mobile == $res {
+		@media only screen and (max-width: $mobile_width) {
+			@content;
+		}
+	}
+
+	@if tablet == $res {
+		@media only screen and (max-width: $tablet_width) {
+			@content;
+		}
+	}
+
+	@if desktop == $res {
+		@media only screen and (max-width: $desktop_width) {
+			@content;
+		}
+	}
+
+	@if wide == $res {
+		@media only screen and (max-width: $wide_width) {
+			@content;
+		}
+	}
+}
+
+
 @mixin link-transition( $attr: color ) {
 	transition: $attr $link_transition ease-in-out;
 }

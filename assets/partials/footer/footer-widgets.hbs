@@ -1,0 +1,38 @@
+<aside class="widget-area" role="complementary" aria-label="Footer">
+  <div class="widget-column">
+    <section id="search" class="widget widget_search">
+      {{!-- {{ "search" | absURL }} --}}
+      <div class="search-form">
+        <label>
+          <span class="screen-reader-text">Search for:</span>
+          <input type="search" class="search-field" placeholder="Search ..." value name="s">
+        </label>
+        <input type="submit" class="search-submit" value="Search" data-ghost-search>
+      </div>
+    </section>
+    <section id="recent-posts" class="widget widget_recent_entries">
+      <h2 class="widget-title">Recent Posts</h2>
+      <ul>
+        <li> list </li>
+        {{!-- {{ range first 5 (where site.RegularPages.ByPublishDate.Reverse "Type" "in" site.Params.mainSections) }}
+        <li>
+          <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+        </li>
+        {{ end }} --}}
+      </ul>
+    </section>
+
+    {{!-- {{ if .Site.Taxonomies.tags }}
+      <section id="categories" class="widget widget_categories">
+        <h2 class="widget-title">Tags</h2>
+        <ul>
+          {{ range .Site.Taxonomies.tags }}
+          <li class="cat-item">
+            <a href="{{ .Page.RelPermalink }}">{{ .Page.Title }}</a>
+          </li>
+          {{ end }}
+        </ul>
+      </section>
+    {{ end }} --}}
+  </div>
+</aside>

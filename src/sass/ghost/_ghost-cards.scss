@@ -33,6 +33,19 @@
   border-radius: var(--radius);
 }
 
+.kg-bookmark-card{
+  @include mediamax(tablet) {
+    .kg-bookmark-thumbnail{
+      display: none;
+      transition: var(--transition);
+    }
+    .kg-bookmark-description{
+      display: none;
+      transition: var(--transition);
+    }
+  }
+}
+
 /* Toggle card */
 .kg-toggle-card {
   padding: 1rem;
