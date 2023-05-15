@@ -20,53 +20,51 @@ import postcssPresetEnv from 'postcss-preset-env';
 import { resolve } from "path";
 import livereload from 'rollup-plugin-livereload';
 
-// Rollup configuration
-export default defineConfig({
-    input: 'src/js/app/index.js',
-    output: {
-        file: "assets/built/app.js",
-        sourcemap: true,
-        format: 'iife',
-        plugins: [terser()]
-    },
+
+const output = {
+    dir: 'assets/built/',
+    sourcemap: true,
+    format: 'es',
+    plugins: [terser()],
+};
+
+const plugins = [commonjs(), nodeResolve(), babel({ babelHelpers: 'bundled' })];
+
+const css = postcss({
+    extract: true,
+    sourceMap: true,
     plugins: [
-        commonjs(), 
-        nodeResolve(), 
-        babel({ babelHelpers: 'bundled' }),
-        postcss({
-            extract: true,
-            sourceMap: true,
-            plugins: [
-                atImport(),
-                postcssPresetEnv({})
-            ], 
-            minimize: true,
-        }),
+        atImport(),
+        postcssPresetEnv({
+            features: {
+              'custom-properties': false,
+              'logical-properties-and-values': false,
+            },
+          }),
+    ],
+    minimize: true,
+})
+
+
+// Rollup configuration
+export default defineConfig([{
+    input: 'src/js/app/index.js',
+    output,
+    plugins: [
+        ...plugins,
+        css,
         process.env.BUILD !== "production" && livereload({
             watch: resolve('.'),
             extraExts: ['hbs'],
             exclusions: [resolve('node_modules')]
         }),
     ]
-})
-
-// export default [
-//   {
-//     input: 'src/js/app/index.js',
-//     output: {
-//       file: 'assets/built/app.js',
-//       format: 'iife',
-//       sourcemap: true,
-//     },
-//     plugins: [...plugins, postcssConfig],
-//   },
-//   {
-//     input: 'src/js/post/index.js',
-//     output: {
-//       file: 'assets/built/post.js',
-//       format: 'iife',
-//       sourcemap: true,
-//     },
-//     plugins,
-//   },
-// ];
+}, {
+    input: 'src/js/app/syntax-highlighting.js',
+    output,
+    plugins,
+}, {
+    input: 'src/js/post/post.js',
+    output,
+    plugins,
+}]);

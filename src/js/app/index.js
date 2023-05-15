@@ -1,13 +1,10 @@
 import '../../sass/style.scss';
 import { determineColorModeSupport } from './colorModeToggle';
+import responsiveTableInit from './responsiveTables';
+import generateColorPaletee from './generateColorPalette';
+import initMediumZoom from './medium_zoom';
 
-// LiveReload server
-// if (ENV === 'development') {
-//   const script = document.createElement('script');
-//   script.src = `http://${
-//     (location.host || 'localhost').split(':')[0]
-//   }:35729/livereload.js?snipver=1`;
-//   document.head.append(script);
-//   console.log('Reload script added');
-// }
 determineColorModeSupport();
+responsiveTableInit();
+generateColorPaletee();
+initMediumZoom();

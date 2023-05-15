@@ -55,14 +55,14 @@
 
 		> li {
 
-			color: var(--color__link);
+			color: var(--primary);
 			display: inline;
 			position: relative;
 
 			> a {
 
 				font-weight: 700;
-				color: var(--color__link);
+				color: var(--primary);
 				margin-right: #{0.5 * $size__spacing-unit};
 
 				+ svg {
@@ -71,7 +71,7 @@
 
 				&:hover,
 				&:hover + svg {
-					color: var(--color__link)-hover;
+					color: var(--primary-dark);
 				}
 			}
 
@@ -118,11 +118,6 @@
 							top: #{-0.125 * $size__spacing-unit};
 							vertical-align: text-bottom;
 						}
-					}
-
-					.wp-customizer-unloading &,
-					&.is-empty {
-						display: none;
 					}
 
 					svg {

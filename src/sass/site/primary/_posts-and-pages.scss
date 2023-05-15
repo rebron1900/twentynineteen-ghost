@@ -51,7 +51,7 @@
 			color: inherit;
 
 			&:hover {
-				color: var(--color__text-hover);
+				color: var(--primary);
 			}
 		}
 	}
@@ -59,10 +59,10 @@
 	.entry-meta,
 	.entry-footer {
 
-		color: var(--color__text-light);
+		color: var(--element-light);
 		font-weight: 500;
 
-		> span {
+		>span {
 
 			margin-right: $size__spacing-unit;
 			display: inline-block;
@@ -79,7 +79,7 @@
 
 			&:hover {
 				text-decoration: none;
-				color: var(--color__link);
+				color: var(--primary);
 			}
 		}
 
@@ -165,7 +165,8 @@
 				display: block;
 				width: 100%;
 				height: 100%;
-				top: 0; left: 0;
+				top: 0;
+				left: 0;
 				content: "\020";
 				pointer-events: none;
 			}
@@ -205,7 +206,7 @@
 			}
 
 			&:hover {
-				color: var(--color__link);
+				color: var(--primary);
 				text-decoration: none;
 			}
 		}
@@ -231,7 +232,7 @@
 		}
 
 		// Overwrite iframe embeds that have inline styles.
-		> iframe[style] {
+		>iframe[style] {
 
 			margin: 32px 0 !important;
 			max-width: 100% !important;
@@ -251,17 +252,75 @@
 			text-decoration: none;
 		}
 
-		// Classic editor audio embeds.
-		.wp-audio-shortcode {
-			max-width: calc(100vw - (2 * #{ $size__spacing-unit }));
 
-			@include media(tablet) {
-				max-width: $size__site-tablet-content;
+		/* Links */
+		a {
+			text-decoration: underline;
+			text-decoration-thickness: 2px;
+			transition: text-decoration-color 0.1s;
+		}
+
+		a:hover {
+			text-decoration-color: var(--color__text-hover);
+		}
+
+		/* Divider */
+		hr {
+			height: 1px;
+			background-color: var(--color__border);
+			border: none;
+		}
+
+		/* Table */
+		.sm-table-wrapper {
+			border: 1px solid var(--border-color);
+			border-radius: var(--radius);
+
+
+			table {
+				width: 100%;
+				border-collapse: collapse;
 			}
 
-			@include media(desktop) {
-				max-width: $size__site-desktop-content;
+			tbody tr {
+				border-top: 1px solid var(--border-color);
+				transition: background-color 0.3s;
 			}
+
+			tbody tr:hover {
+				background-color: var(--surface-dark);
+			}
+
+			thead th {
+				padding: var(--radius);
+				font-family: var(--heading-typeface);
+				text-align: left;
+			}
+
+			tbody td {
+				padding: var(--radius);
+				font-size: var(--small);
+			}
+
+		}
+
+		/* Code */
+		code:not([class*='language']) {
+			padding: 0.15em 0.25em;
+			font-family: var(--mono-typeface);
+			font-size: var(--small);
+			color: var(--element-light);
+			background-color: var(--border-color);
+			border-radius: 4px;
+		}
+
+		/* List */
+		li {
+			line-height: inherit;
+		}
+
+		li:not(:last-child) {
+			margin-block-end: 0.5em;
 		}
 	}
 }

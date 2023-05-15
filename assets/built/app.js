@@ -1,2 +1,0 @@
-!function(e,t){e&&!e.getElementById("livereloadscript")&&((t=e.createElement("script")).async=1,t.src="//"+(self.location.host||"localhost").split(":")[0]+":35729/livereload.js?snipver=1",t.id="livereloadscript",e.getElementsByTagName("head")[0].appendChild(t))}(self.document),function(){"use strict";!function(){const e=document.querySelectorAll(".sm-dark-mode, .sm-light-mode");window.CSS&&CSS.supports("color","var(--primary)")||e.forEach((e=>{e.style.display="none"}))}()}();
-//# sourceMappingURL=app.js.map

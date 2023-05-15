@@ -5,11 +5,11 @@ input[type="reset"],
 input[type="submit"] {
 
 	@include button-transition;
-	background: var(--color__background-button);
+	background: var(--primary);
 	border: none;
 	border-radius: 5px;
 	box-sizing: border-box;
-	color: var(--color__text-main);
+	color: var(--button-text);
 	@include font-family( $font__heading );
 	font-size: $font__size-sm;
 	font-weight: 700;
@@ -20,17 +20,16 @@ input[type="submit"] {
 	vertical-align: bottom;
 
 	&:hover {
-		background: var(--color__background-button)-hover;
+		opacity: .85;
 		cursor: pointer;
 	}
 
 	&:visited {
-		color: var(--color__text-main);
 		text-decoration: none;
 	}
 
 	&:focus {
-		background: var(--color__background-button)-hover;
+		opacity: .85;
 		outline: thin dotted;
 		outline-offset: -4px;
 	}

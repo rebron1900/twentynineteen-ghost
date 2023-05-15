@@ -1,7 +1,7 @@
 /* Blockquote */
 blockquote:not(.kg-blockquote-alt) {
   padding-inline-start: 2rem;
-  border-left: 3px solid var(--color__border);
+  border-left: 3px solid var(--border-color);
 }
 
 .kg-blockquote-alt {
@@ -10,12 +10,12 @@ blockquote:not(.kg-blockquote-alt) {
   font-size: 3rem;
   font-weight: 800;
   line-height: 1.2;
-  border: none;
+  color: var(--element-light);
 }
 
 .kg-blockquote-alt::before,
 .kg-blockquote-alt::after {
-  color: var(--color__text-light);
+  color: var(--primary);
 }
 
 .kg-blockquote-alt::before {
@@ -38,23 +38,26 @@ blockquote:not(.kg-blockquote-alt) {
 }
 
 .kg-image,
-.sm-post-content img {
+.entry-content img {
   display: block;
   max-width: 100%;
   height: auto;
   margin-inline: auto;
 }
 
-.sm-post-content figcaption {
+.entry-content figcaption {
   padding: 0.25rem;
-  font-size: $font__size_base;
+  font-size: var(--small);
   text-align: center;
+  color: var(--element-light);
 }
 
 .kg-width-wide,
 .kg-embed-card,
 .kg-gallery-card {
   grid-column: content;
+  min-width: 80%;
+  
 }
 
 .kg-embed-card .twitter-tweet {
@@ -70,6 +73,7 @@ blockquote:not(.kg-blockquote-alt) {
 
 .kg-width-full {
   grid-column: start / end;
+  min-width: 100%;
 }
 
 .kg-embed-card [src*='youtube'],
@@ -82,4 +86,16 @@ blockquote:not(.kg-blockquote-alt) {
 .kg-embed-card iframe {
   /* stylelint-disable-next-line declaration-no-important */
   margin-inline: auto !important;
+}
+
+.kg-header-card.kg-size-small h2.kg-header-card-header{
+  font-size: var(--h2) !important;
+}
+
+.kg-header-card.kg-size-small h3.kg-header-card-header{
+  font-size: var(--h3) !important;
+}
+
+.kg-header-card.kg-size-small .kg-header-card-header:before{
+  display: none;
 }

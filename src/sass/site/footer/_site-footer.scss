@@ -29,7 +29,7 @@
 	}
 
 	.site-info {
-		color: var(--color__text-light);
+		color: var(--element-light);
 		-webkit-hyphens: auto;
 		-moz-hyphens: auto;
 		-ms-hyphens: auto;
@@ -41,7 +41,7 @@
 
 			&:hover {
 				text-decoration: none;
-				color: var(--color__link);
+				color: var(--primary);
 			}
 		}
 

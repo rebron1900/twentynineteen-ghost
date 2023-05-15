@@ -9,7 +9,7 @@
   "scripts": {
     "dev": "rollup -c --environment BUILD:development -w",
     "build": "rollup -c --environment BUILD:production",
-    "zip": "npm run build && bestzip $npm_package_name.zip assets/* partials/* members/* *.hbs package.json",
+    "zip": "npm run build && bestzip twentynineteen-ghost.zip assets/* partials/* members/* *.hbs package.json",
     "test": "npx gscan .",
     "pretest": "npm run build"
   },
@@ -79,9 +79,11 @@
     "@rollup/plugin-node-resolve": "^15.0.1",
     "@rollup/plugin-terser": "^0.4.0",
     "bestzip": "^2.2.1",
+    "medium-zoom": "^1.0.8",
     "postcss": "^8.4.23",
     "postcss-import": "^15.1.0",
     "postcss-preset-env": "^8.0.1",
+    "prismjs": "^1.29.0",
     "rollup": "^3.18.0",
     "rollup-plugin-livereload": "^2.0.5",
     "rollup-plugin-postcss": "^4.0.2",
