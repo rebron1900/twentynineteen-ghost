@@ -261,7 +261,13 @@
 		}
 
 		a:hover {
-			text-decoration-color: var(--color__text-hover);
+			text-decoration-color: var(--primary-light);
+			transition: var(--transition);
+		}
+
+		/* delete line */
+		s{
+			text-decoration-color: var(--element);
 		}
 
 		/* Divider */
