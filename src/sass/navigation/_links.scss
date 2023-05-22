@@ -2,6 +2,7 @@ a {
 
 	@include link-transition;
 	color: var(--primary);
+	transition: var(--transition);
 
 	&:visited {
 		color: var(--primary);
@@ -12,11 +13,13 @@ a {
 		color: var(--primary-dark);
 		outline: 0;
 		text-decoration: none;
+		transition: var(--transition);
 	}
 
 	&:focus {
 		outline: thin dotted;
 		text-decoration: underline;
 		text-decoration-thickness: 2px;
+		transition: var(--transition);
 	}
 }

@@ -123,7 +123,7 @@
 			}
 		}
 
-		a:focus {
+		a:focus, a:hover {
 			text-decoration: underline;
 			outline-offset: -1px;
 
@@ -136,6 +136,12 @@
 					text-decoration: underline;
 				}
 			}
+		}
+
+		a.current{
+			text-decoration: underline;
+			outline-offset: -1px;
+			background-color: var(--border-color-accent);
 		}
 
 		.nav-next-text,

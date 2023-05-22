@@ -1,2 +1,2 @@
-twikoo.init({envId:"https://comment.1900.live",el:".tk-comments"});
+twikoo.init({envId:"https://comment.1900.live",el:".tk-comments"}).then((function(){twikoo.getRecentComments({envId:"https://comment.1900.live",pageSize:6,includeReply:!1}).then((function(e){console.log(e),document.querySelector(".discussion-avatar-list"),document.querySelector(".discussion-avatar-list li").cloneNode,document.querySelector(".discussion-avatar-list li")})).catch((function(e){console.error(e)}))}));
 //# sourceMappingURL=post.js.map

@@ -1,25 +1,40 @@
 <!doctype html>
-<html lang="{{@site.locale}}"  data-color-pref="{{@custom.color_mode}}" data-accent-color="{{@site.accent_color}}">
+<html lang="{{@site.locale}}" data-color-pref="{{@custom.color_mode}}" data-accent-color="{{@site.accent_color}}">
+
 <head>
-	<meta charset="utf-8" />
+  <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  
+
   <title>{{meta_title}}</title>
 
   <link rel="stylesheet" href="{{asset 'built/index.css'}}">
   <link rel="preload" href="{{asset 'fonts/NonBreakingSpaceOverride.woff'}}" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" type="text/css" href="{{asset 'built/cards.min.css' }}">
   <script>
-    function e(e){let t=0,n=0,o=0;return 4===e.length?(t=`0x${e[1]}${e[1]}`,n=`0x${e[2]}${e[2]}`,o=`0x${e[3]}${e[3]}`):7===e.length&&(t=`0x${e[1]}${e[2]}`,n=`0x${e[3]}${e[4]}`,o=`0x${e[5]}${e[6]}`),[t,n,o]}!function(){const[t,n,o]=document.documentElement.dataset.accentColor?e(document.documentElement.dataset.accentColor):e("#ff0000"),[m,c,r]=function(e){const[t,n,o]=e,m=t/255,c=n/255,r=o/255,l=Math.min(m,c,r),s=Math.max(m,c,r),u=s-l;let d=0,y=0,a=0;return d=0===u?0:s===m?(c-r)/u%6:s===c?(r-m)/u+2:(m-c)/u+4,d=Math.round(60*d),d<0&&(d+=360),a=(s+l)/2,y=0===u?0:u/(1-Math.abs(2*a-1)),y=+(100*y).toFixed(1),a=+(100*a).toFixed(1),[d,y,a,parseInt(t),parseInt(n),parseInt(o)]}([t,n,o]),l=m+180>360?m-180:m+180;document.documentElement.style.setProperty("--primary-h",m),document.documentElement.style.setProperty("--saturation",`${c}%`),document.documentElement.style.setProperty("--lightness",`${r}%`),document.documentElement.style.setProperty("--complementary-color",l),document.documentElement.style.setProperty("--r",t/255),document.documentElement.style.setProperty("--g",n/255),document.documentElement.style.setProperty("--b",o/255),document.documentElement.style.setProperty("--cr",(255-t)/255),document.documentElement.style.setProperty("--cg",(255-n)/255),document.documentElement.style.setProperty("--cb",(255-o)/255)}();
+    const colorModePref = document.documentElement.dataset.colorPref;
+
+    const colorModePrefOpposite = colorModePref === 'dark' ? 'light' : 'dark'
+
+    if (
+      localStorage.getItem('pref') === colorModePrefOpposite ||
+      (window.matchMedia(`(prefers-color-scheme: ${colorModePrefOpposite})`).matches &&
+        !localStorage.getItem('pref'))
+    ) {
+      document.documentElement.setAttribute('data-color-pref', colorModePrefOpposite);
+    }
+  </script>
+  <script>
+    function e(e) { let t = 0, n = 0, o = 0; return 4 === e.length ? (t = `0x${e[1]}${e[1]}`, n = `0x${e[2]}${e[2]}`, o = `0x${e[3]}${e[3]}`) : 7 === e.length && (t = `0x${e[1]}${e[2]}`, n = `0x${e[3]}${e[4]}`, o = `0x${e[5]}${e[6]}`), [t, n, o] } !function () { const [t, n, o] = document.documentElement.dataset.accentColor ? e(document.documentElement.dataset.accentColor) : e("#ff0000"), [m, c, r] = function (e) { const [t, n, o] = e, m = t / 255, c = n / 255, r = o / 255, l = Math.min(m, c, r), s = Math.max(m, c, r), u = s - l; let d = 0, y = 0, a = 0; return d = 0 === u ? 0 : s === m ? (c - r) / u % 6 : s === c ? (r - m) / u + 2 : (m - c) / u + 4, d = Math.round(60 * d), d < 0 && (d += 360), a = (s + l) / 2, y = 0 === u ? 0 : u / (1 - Math.abs(2 * a - 1)), y = +(100 * y).toFixed(1), a = +(100 * a).toFixed(1), [d, y, a, parseInt(t), parseInt(n), parseInt(o)] }([t, n, o]), l = m + 180 > 360 ? m - 180 : m + 180; document.documentElement.style.setProperty("--primary-h", m), document.documentElement.style.setProperty("--saturation", `${c}%`), document.documentElement.style.setProperty("--lightness", `${r}%`), document.documentElement.style.setProperty("--complementary-color", l), document.documentElement.style.setProperty("--r", t / 255), document.documentElement.style.setProperty("--g", n / 255), document.documentElement.style.setProperty("--b", o / 255), document.documentElement.style.setProperty("--cr", (255 - t) / 255), document.documentElement.style.setProperty("--cg", (255 - n) / 255), document.documentElement.style.setProperty("--cb", (255 - o) / 255) }();
   </script>
 
 
   {{!-- Output SEO + Meta data and other settings by Ghost --}}
   {{ghost_head}}
-  
+
 </head>
 
-{{!-- {{ if not .Site.Params.disable_image_filters }}image-filters-enabled{{ end }}  --}}
+{{!-- {{ if not .Site.Params.disable_image_filters }}image-filters-enabled{{ end }} --}}
+
 <body class="{{body_class}} archive">
   <div id="page" class="site">
     <a class="skip-link screen-reader-text" href="#content">Skip to content</a>
@@ -31,20 +46,20 @@
       </div><!-- .layout-wrap -->
 
       {{> "header/entry-header" }}
-        <!-- For single posts and pages, special treatment if there's a featured image -->
+      <!-- For single posts and pages, special treatment if there's a featured image -->
       {{ end }}
     </header><!-- #masthead -->
 
     <div id="content" class="site-content">
       <section id="primary" class="content-area">
         <main id="main" class="site-main">
-          {{{body}}}                                                                                                                       
+          {{{body}}}
         </main>
       </section>
     </div>
 
     {{> "footer" }}
-    
+
   </div>
 
   {{ghost_foot}}
@@ -53,6 +68,7 @@
   <script src="{{asset 'built/index.js'}}"></script>
   <script src="{{asset 'built/post.js'}}"></script>
   <script src="{{asset 'built/syntax-highlighting.js'}}" type="module" defer></script>
-  
+
 </body>
+
 </html>

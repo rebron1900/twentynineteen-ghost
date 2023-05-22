@@ -9,7 +9,7 @@
 		display: block;
 	}
 
-	> div {
+	>div {
 		display: inline;
 	}
 
@@ -53,24 +53,24 @@
 		margin: 0;
 		padding: 0;
 
-		> li {
+		>li {
 
 			color: var(--primary);
 			display: inline;
 			position: relative;
 
-			> a {
+			>a {
 
 				font-weight: 700;
 				color: var(--primary);
 				margin-right: #{0.5 * $size__spacing-unit};
 
-				+ svg {
+				+svg {
 					margin-right: #{0.5 * $size__spacing-unit};
 				}
 
 				&:hover,
-				&:hover + svg {
+				&:hover+svg {
 					color: var(--primary-dark);
 				}
 			}
@@ -84,12 +84,12 @@
 					position: relative;
 				}
 
-				> a {
+				>a {
 					margin-right: #{0.125 * $size__spacing-unit};
 				}
 
-				& > a,
-				.menu-item-has-children > a {
+				&>a,
+				.menu-item-has-children>a {
 
 					&:after {
 						content: "";
@@ -127,7 +127,7 @@
 				}
 			}
 
-			&:last-child > a,
+			&:last-child>a,
 			&:last-child.menu-item-has-children .submenu-expand {
 				margin-right: 0;
 			}
@@ -153,7 +153,7 @@
 			min-width: max-content;
 		}
 
-		> li {
+		>li {
 
 			display: block;
 			float: none;
@@ -164,13 +164,13 @@
 				.submenu-expand {
 					display: inline-block;
 					position: absolute;
-					width: calc( 24px + #{$size__spacing-unit} );
+					width: calc(24px + #{$size__spacing-unit});
 					right: 0;
-					top: calc( .125 * #{$size__spacing-unit} );
+					top: calc(.125 * #{$size__spacing-unit});
 					bottom: 0;
 					color: white;
 					line-height: 1;
-					padding: calc( .5 * #{$size__spacing-unit} );
+					padding: calc(.5 * #{$size__spacing-unit});
 
 					svg {
 						top: 0;
@@ -183,7 +183,7 @@
 
 				@include media(tablet) {
 
-					.menu-item-has-children > a {
+					.menu-item-has-children>a {
 
 						&:after {
 							content: "\203a";
@@ -192,14 +192,14 @@
 				}
 			}
 
-			> a,
-			> .menu-item-link-return {
+			>a,
+			>.menu-item-link-return {
 
 				color: var(--color__background-body);
 				display: block;
 				line-height: $font__line-height-heading;
 				text-shadow: none;
-				padding: calc( .5 * #{$size__spacing-unit} ) calc( 24px + #{$size__spacing-unit} ) calc( .5 * #{$size__spacing-unit} ) $size__spacing-unit;
+				padding: calc(.5 * #{$size__spacing-unit}) calc(24px + #{$size__spacing-unit}) calc(.5 * #{$size__spacing-unit}) $size__spacing-unit;
 				max-width: #{20 * $size__spacing-unit};
 
 				&:hover,
@@ -212,14 +212,14 @@
 				}
 			}
 
-			> .menu-item-link-return {
+			>.menu-item-link-return {
 				width: 100%;
 				font-size: $font__size_base;
 				font-weight: normal;
 				text-align: left;
 			}
 
-			> a:empty {
+			>a:empty {
 				display: none;
 			}
 
@@ -232,7 +232,7 @@
 				svg {
 					position: relative;
 					top: 0.2rem;
-					margin-right: calc( .25 * #{$size__spacing-unit} );
+					margin-right: calc(.25 * #{$size__spacing-unit});
 				}
 			}
 		}
@@ -244,7 +244,7 @@
 	 * :focus-within needs its own selector so other similar
 	 * selectors don’t get ignored if a browser doesn’t recognize it
 	 */
-	.main-menu .menu-item-has-children:not(.off-canvas):focus-within > .sub-menu {
+	.main-menu .menu-item-has-children:not(.off-canvas):focus-within>.sub-menu {
 
 		display: block;
 		left: 0;
@@ -309,7 +309,7 @@
 			counter-reset: submenu;
 		}
 
-		.sub-menu > li > a::before {
+		.sub-menu>li>a::before {
 			font-family: $font__body;
 			font-weight: normal;
 			content: "\2013\00a0" counters(submenu, "\2013\00a0", none);
@@ -317,9 +317,9 @@
 		}
 	}
 
-	.main-menu .menu-item-has-children:not(.off-canvas):hover > .sub-menu,
-	.main-menu .menu-item-has-children:not(.off-canvas):focus > .sub-menu,
-	.main-menu .menu-item-has-children.is-focused:not(.off-canvas) > .sub-menu {
+	.main-menu .menu-item-has-children:not(.off-canvas):hover>.sub-menu,
+	.main-menu .menu-item-has-children:not(.off-canvas):focus>.sub-menu,
+	.main-menu .menu-item-has-children.is-focused:not(.off-canvas)>.sub-menu {
 
 		display: block;
 		left: 0;
@@ -385,7 +385,7 @@
 			counter-reset: submenu;
 		}
 
-		.sub-menu > li > a::before {
+		.sub-menu>li>a::before {
 			font-family: $font__body;
 			font-weight: normal;
 			content: "\2013\00a0" counters(submenu, "\2013\00a0", none);
@@ -396,7 +396,7 @@
 	/**
 	 * Fade-in animation for top-level submenus
 	 */
-	.main-menu > .menu-item-has-children:not(.off-canvas):hover > .sub-menu {
+	.main-menu>.menu-item-has-children:not(.off-canvas):hover>.sub-menu {
 		animation: fade_in 0.1s forwards;
 	}
 
@@ -418,13 +418,13 @@
 
 		li:hover,
 		li:focus,
-		li > a:hover,
-		li > a:focus {
+		li>a:hover,
+		li>a:focus {
 			background-color: transparent;
 		}
 
-		> li > a,
-		> li > .menu-item-link-return {
+		>li>a,
+		>li>.menu-item-link-return {
 			white-space: inherit;
 		}
 
@@ -441,30 +441,31 @@
 			right: 0;
 			bottom: 0;
 			position: fixed;
-			z-index: 100000; /* Make sure appears above mobile admin bar */
+			z-index: 100000;
+			/* Make sure appears above mobile admin bar */
 			width: 100vw;
 			height: 100vh;
 			max-width: 100vw;
 			transform: translateX(+100%);
 			animation: slide_in_right 0.3s forwards;
 
-			> .mobile-parent-nav-menu-item {
+			>.mobile-parent-nav-menu-item {
 				display: block;
 			}
 
 			/* Prevent menu from being blocked by admin bar */
 			.admin-bar & {
 				top: 46px;
-				height: calc( 100vh - 46px );
+				height: calc(100vh - 46px);
 
 				.sub-menu.expanded-true {
 					top: 0;
 				}
 
 				/* WP core breakpoint */
-				@media only screen and ( min-width: 782px ) {
+				@media only screen and (min-width: 782px) {
 					top: 32px;
-					height: calc( 100vh - 32px );
+					height: calc(100vh - 32px);
 
 					.sub-menu.expanded-true {
 						top: 0;
@@ -495,7 +496,17 @@
 	from {
 		opacity: 0;
 	}
+
 	to {
 		opacity: 1;
 	}
+}
+
+
+[data-color-pref='light'] .light-mode {
+	display: none !important;
+}
+
+[data-color-pref='dark'] .dark-mode {
+	display: none !important;
 }
