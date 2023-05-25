@@ -1,0 +1,16 @@
+.twikoo {
+    .tk-submit {
+
+        .el-input--small,
+        .el-button--small,
+        .el-textarea {
+            font-size: var(--small);
+        }
+    }
+
+    .tk-comments-container {
+        .tk-comments-count {
+            color: var(--surface)
+        }
+    }
+}
