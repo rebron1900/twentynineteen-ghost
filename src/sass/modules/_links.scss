@@ -1,0 +1,58 @@
+/* ==========================================================================
+    links
+    ========================================================================== */
+
+.links {
+    display: grid !important;
+    grid-template-columns: repeat(4, 1fr);
+    padding-top: 50px !important;
+    grid-column-gap: 20px;
+    -moz-column-gap: 20px !important;
+    column-gap: 20px;
+    
+    .kg-blockquote-alt, .kg-card{
+        margin-block: auto;
+    }
+
+    .kg-card {
+        margin-bottom: 0.1em !important;
+        padding: 10px 0;
+        min-width: 10em;
+        
+
+        .kg-bookmark-content {
+            height: 6em;
+            
+            .kg-bookmark-description{
+                max-height: 100%;
+            }
+        }
+
+        /* stylelint-disable-next-line selector-no-qualifying-type */
+        .kg-bookmark-container{
+            border-radius: var(--radius);
+            &:hover {
+                border-color: var(--primary);
+                border-radius: var(--radius);
+            }
+        }
+
+        figcaption,
+        .kg-bookmark-thumbnail,
+        .kg-bookmark-metadata {
+            display: none;
+        }
+
+        .kg-bookmark-title {
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            width: 100%;
+        }
+    }
+
+    @media (max-width: 900px) {
+        grid-template-columns: repeat(2, 1fr);
+        padding-top: 30px;
+    }
+}
