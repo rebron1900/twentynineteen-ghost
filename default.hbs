@@ -28,6 +28,7 @@
   </script>
 
 
+
   {{!-- Output SEO + Meta data and other settings by Ghost --}}
   {{ghost_head}}
 
@@ -63,12 +64,14 @@
   </div>
 
   {{ghost_foot}}
-  <script defer="" src="{{asset 'built/cards.min.js' }}"></script>
   <script src="https://cdn.staticfile.org/twikoo/1.6.16/twikoo.all.min.js"></script>
-  <script src="{{asset 'built/index.js'}}"></script>
-  <script src="{{asset 'built/post.js'}}"></script>
   <script src="{{asset 'built/syntax-highlighting.js'}}" type="module" defer></script>
-
+  <script src="{{asset 'built/index.js'}}" type="module" defer></script>
+  {{#is 'page,post'}}
+  <script defer="" src="{{asset 'built/cards.min.js' }}"></script>
+  <script src="{{asset 'built/post.js'}}"></script>
+  {{/is}}
+  
 </body>
 
 </html>
