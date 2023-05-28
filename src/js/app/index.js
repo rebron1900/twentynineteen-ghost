@@ -1,14 +1,15 @@
 import '../../sass/style.scss';
 import initClickHandler from './clickHandler';
 import { determineColorModeSupport } from './colorModeToggle';
-import responsiveTableInit from './responsiveTables';
 import generatePagination from './pagination';
-import generateColorPaletee from './generateColorPalette';
 import initMediumZoom from './medium_zoom';
+import responsiveTableInit from './responsiveTables';
+import toc from './toc';
 
 initClickHandler();
 determineColorModeSupport();
-responsiveTableInit();
-generateColorPaletee();
-initMediumZoom();
 generatePagination();
+initMediumZoom();
+responsiveTableInit();
+toc();
+

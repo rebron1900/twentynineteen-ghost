@@ -213,3 +213,73 @@
 	</script>
 
 
+	<script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.0/jquery.min.js"></script>
+		<script>
+		$(document).ready(function () {
+			var temp = { douban : [], books:[]}
+			$.when(
+				{{!-- $.getJSON('{{ @custom.douban_book }}'), 
+				$.getJSON('{{ @custom.douban_movie }}') --}}
+
+				$.getJSON('https://github.com/rebron1900/doumark-action/raw/master/data/douban/book.json'), 
+				$.getJSON('https://github.com/rebron1900/doumark-action/raw/master/data/douban/movie.json')
+
+			).done(function(b, m) {  // 或者也可以使用 ".done"
+				$(m[0]).each(function(i,v){
+					temp.douban.push({id : this.id, 
+									title : this.subject.title, 
+									subtitle : this.subject.card_subtitle, 
+									poster: this.subject.pic.large,
+									pubdate: this.subject.pubdate[0],
+									url: this.subject.url,
+									rating: this.subject.rating.value,
+									genres: this.subject.genres.join(','),
+									star: this.subject.rating.star_count,
+									comment: this.comment,
+									tags: this.tags.join(','),
+									star_time: this.create_time,
+									type: 'movie'
+									})
+				})
+				$(b[0]).each(function(){
+					temp.douban.push({id : this.id, 
+									title : this.subject.title, 
+									subtitle : this.subject.card_subtitle, 
+									poster: this.subject.pic.large,
+									pubdate: this.subject.pubdate[0],
+									url: this.subject.url,
+									rating: this.subject.rating == null ? 0 : this.subject.rating.value,
+									genres: '',
+									star: this.subject.rating == null ? 0 : this.subject.rating.star_count,
+									comment: this.comment,
+									tags: '',
+									star_time: this.create_time,
+									type: 'book'
+									})
+				})
+				
+				$('.movies').html(tmpl('tmpl-movies', temp))
+
+				var gtemp = [];
+				var gyear = [];
+				$(temp.douban).each(function(){ 
+					t = this.genres.split(',');
+					if(t.length > 0){
+						$(t).each(function(i,d){
+							if(gtemp.indexOf(d) == -1){ gtemp.push(d) }
+						});
+					}else{
+					gtemp.push(this.genres) }
+ 
+					
+					this.pubdate = typeof(this.pubdate) == "undefined" ? "" : this.pubdate.replace('年','-').replace('月','-')
+					var tyear = (new Date(this.pubdate).getFullYear());
+					if(gyear.indexOf(tyear) == -1 ){
+						gyear.push(tyear)
+					}
+				});
+				$('.genres').html(tmpl('tmpl-genres', gtemp))
+				$('.fyear').html(tmpl('tmpl-fyear', gyear.sort(function(a,b){ return b-a }	)))
+			});			
+		});
+		</script>

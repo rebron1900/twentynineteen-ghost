@@ -50,7 +50,7 @@
 .kg-toggle-card {
   padding: 1rem;
   border: 1px solid var(--border-color);
-  border-radius: var(--radius);
+  border-radius: var(--radius) !important;
   box-shadow: none;
 }
 
@@ -91,5 +91,5 @@
 .kg-callout-card {
   padding: 1rem;
   background-color: var(--border-color);
-  border-radius: var(--radius);
+  border-radius: var(--radius) !important;
 }

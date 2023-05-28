@@ -16,12 +16,21 @@
       {{> "entry-meta" }}
       <span class="tags-links">
         {{> "icons/ui/comment" }}
-        <a href="#twikoo">参与评论</a>
+        <a href="#comments">参与评论</a>
       </span>
     </div>
   </header>
   <div class="entry-content">
     {{content}}
+
+    <div class="sm-post-toc">
+        <div class="sm-post-toc-contents">
+        </div>
+        <button class="sm-post-toc-btn">
+            <svg class="sm-toc-icon" aria-hidden="true">{{> "icons/ui/toc" }}</svg>
+            <svg class="sm-toc-icon-close" aria-hidden="true">{{> "icons/ui/close" }}</use></svg>
+        </button>
+    </div>
 
     {{#get "posts" include="authors" filter="tags:[{{post.tags}}]+id:-{{post.id}}" limit="3" as |next|}}
     {{#if next}}

@@ -46,10 +46,19 @@ blockquote:not(.kg-blockquote-alt) {
 }
 
 .entry-content figcaption {
-  padding: 0.25rem;
-  font-size: var(--small);
-  text-align: center;
-  color: var(--element-light);
+    color: var(--border-color);
+    font-size: var(--xx-small);
+    padding: 0.25rem;
+    text-align: center;
+
+  &:before,&:after{
+    color: var(--border-color);
+    content: "—";
+    display: inline;
+    height: 1em;
+    width: 2em;
+    padding: 0 0.5em;
+  }
 }
 
 .kg-width-wide,

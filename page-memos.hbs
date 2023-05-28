@@ -1,7 +1,7 @@
 {{!< default}} {{! Everything inside the #post tags pulls data from the post }}
 
 {{#post}}
-<article class="post entry">
+<article class="post entry ">
     {{#if feature_image}}
       <figure class="post-thumbnail">
         <a class="post-thumbnail-inner" href=""{{url}}" aria-hidden="true">
@@ -24,25 +24,24 @@
   </article>
 {{/post}}
 
-	<script type="text/x-tmpl" id="tmpl-memos">
-		{% for (var i=0; i<o.data.length; i++) { %}
-		<li class="timeline page-1">
-			<div class="talks__avatar"><img src="https://cravatar.cn/avatar/cc38267b10cc25dfc62209f8ca34589e?d=identicon" alt="" /></div>
-			<div class="talks__content">
-				<div class="talks__text">
-					<p>{%#  (o.data[i].content) %}</p>
-					<div class="talks__imgs">
-						{% if (!!o.data[i].imgs) { %}
-							{% for (var b=0; b<o.data[i].imgs.length; b++) { %} 
-								{%# o.data[i].imgs[b] %}
-							{% } %}
+<script type="text/x-tmpl" id="tmpl-memos">
+	{% for (var i=0; i<o.data.length; i++) { %}
+	<li class="timeline page-1">
+		<div class="talks__avatar"><img src="https://cravatar.cn/avatar/cc38267b10cc25dfc62209f8ca34589e?d=identicon" alt="" /></div>
+		<div class="talks__content">
+			<div class="talks__text">
+				<p>{%#  (o.data[i].content) %}</p>
+				<div class="talks__imgs">
+					{% if (!!o.data[i].imgs) { %}
+						{% for (var b=0; b<o.data[i].imgs.length; b++) { %} 
+							{%# o.data[i].imgs[b] %}
 						{% } %}
-					</div>
+					{% } %}
 				</div>
-				<div class="talks__meta"><small class="talks__date">{%= new Date(o.data[i].createdTs * 1000).toLocaleString() %}</small></div>
 			</div>
-		</li>
-		{% } %}
-
-	</script>
+			<div class="talks__meta"><small class="talks__date">{%= new Date(o.data[i].createdTs * 1000).toLocaleString() %}</small></div>
+		</div>
+	</li>
+	{% } %}
+</script>
 

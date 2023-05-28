@@ -89,6 +89,18 @@
 	}
 }
 
+.tag-hash-page-fullwidth{
+	.entry .entry-content > *,
+	.entry .entry-summary > *,
+	.entry .entry-summary > .wp-block-group > .wp-block-group__inner-container > *,
+	.entry .entry-content > .wp-block-group > .wp-block-group__inner-container > * {
+	min-width: 80%;
+	max-width: 100%;
+
+}
+
+}
+
 .entry .entry-content > *,
 .entry .entry-summary > * {
 

@@ -292,10 +292,10 @@
 
 
 	::-moz-selection {
-		background: rgba(var(--color__background-body), 0.17);
+		background: rgba(var(--primary), 0.17);
 	}
 
 	::selection {
-		background: rgba(var(--color__background-body), 0.17);
+		background: rgba(var(--primary), 0.17);
 	}
 }

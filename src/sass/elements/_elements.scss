@@ -3,11 +3,11 @@ html {
 }
 
 ::-moz-selection {
-	background-color: var(--color__background_selection);
+	background-color: var(--primary);
 }
 
 ::selection {
-	background-color: var(--color__background_selection);
+	background-color: var(--primary);
 }
 
 *,
