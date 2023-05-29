@@ -23,6 +23,8 @@
   <div class="entry-content">
     {{content}}
 
+
+    {{#has tag="#post-toc"}}
     <div class="sm-post-toc">
         <div class="sm-post-toc-contents">
         </div>
@@ -31,20 +33,7 @@
             <svg class="sm-toc-icon-close" aria-hidden="true">{{> "icons/ui/close" }}</use></svg>
         </button>
     </div>
-
-    {{#get "posts" include="authors" filter="tags:[{{post.tags}}]+id:-{{post.id}}" limit="3" as |next|}}
-    {{#if next}}
-    <div id="related_posts">
-      <h3>相关文章</h3>
-      <ul class="">
-        {{#foreach next}}
-        <li><a href="{{url}}" title="{{title}}">{{title}}</a></li>
-        {{/foreach}}
-      </ul>
-    </div>
-    {{/if}}
-    {{/get}}
-
+    {{/has}}
 
   </div>
   </article>

@@ -1,0 +1,38 @@
+[data-date='23'] + [data-date='23'] h2,
+[data-date='22'] + [data-date='22'] h2,
+[data-date='21'] + [data-date='21'] h2,
+[data-date='20'] + [data-date='20'] h2,
+[data-date='19'] + [data-date='19'] h2,
+[data-date='18'] + [data-date='18'] h2,
+[data-date='17'] + [data-date='17'] h2,
+[data-date='16'] + [data-date='16'] h2,
+[data-date='15'] + [data-date='15'] h2,
+[data-date='14'] + [data-date='14'] h2,
+[data-date='13'] + [data-date='13'] h2,
+[data-date='12'] + [data-date='12'] h2,
+[data-date='11'] + [data-date='11'] h2,
+[data-date='10'] + [data-date='10'] h2,
+[data-date='09'] + [data-date='09'] h2,
+[data-date='08'] + [data-date='08'] h2,
+[data-date='07'] + [data-date='07'] h2,
+[data-date='06'] + [data-date='06'] h2,
+[data-date='05'] + [data-date='05'] h2,
+[data-date='04'] + [data-date='04'] h2,
+[data-date='03'] + [data-date='03'] h2,
+[data-date='02'] + [data-date='02'] h2,
+[data-date='01'] + [data-date='01'] h2,
+[data-date='00'] + [data-date='00'] h2 {
+  display: none;
+}
+
+.page-archives .entry-content{
+  ul{
+    padding-left: 0;
+  }
+  li {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  
+}

@@ -11,16 +11,22 @@
       </div>
     </section>
     <section id="recent-posts" class="widget widget_recent_entries">
-      <h2 class="widget-title">Recent Posts</h2>
-      <ul>
-        <li> list </li>
-        {{!-- {{ range first 5 (where site.RegularPages.ByPublishDate.Reverse "Type" "in" site.Params.mainSections) }}
-        <li>
-          <a href="{{ .RelPermalink }}">{{ .Title }}</a>
-        </li>
-        {{ end }} --}}
-      </ul>
-    </section>
+
+{{#is "post"}}
+    {{#get "posts" include="authors" filter="tags:[{{post.primary_tag.slug}}]+id:-{{post.id}}" limit="5" as |next|}}
+    {{#if next}}
+    <h2 class="widget-title">Recent Posts</h2>
+    <ul class="">
+      {{#foreach next}}
+      <li class="cat-item"><a href="{{url}}" title="{{title}}">{{title}}</a></li>
+      {{/foreach}}
+    </ul>
+    {{/if}}
+    {{/get}}
+{{/is}}
+     </section>
+
+   
 
     {{!-- {{ if .Site.Taxonomies.tags }}
       <section id="categories" class="widget widget_categories">

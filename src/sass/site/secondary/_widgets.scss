@@ -11,10 +11,10 @@
 	}
 
 	a {
-		color: var(--color__link);
+		color:var(--primary);
 
 		&:hover {
-			color: var(--color__link-hover);
+			color: var(--primary-dark);
 		}
 	}
 }
@@ -33,7 +33,7 @@
 		list-style: none;
 
 		li {
-			color: var(--color__text-light);
+			color: var(--element-light);
 			@include font-family( $font__heading );
 			font-size: calc(#{$font__size_base} * #{$font__size-ratio});
 			font-weight: 700;
