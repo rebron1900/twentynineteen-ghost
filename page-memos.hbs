@@ -1,47 +1,124 @@
-{{!< default}} {{! Everything inside the #post tags pulls data from the post }}
-
-{{#post}}
-<article class="post entry ">
-    {{#if feature_image}}
-      <figure class="post-thumbnail">
-        <a class="post-thumbnail-inner" href=""{{url}}" aria-hidden="true">
-          <img src="{{img_url feature_image size="528"}}"  alt="{{#if feature_image_alt}}{{feature_image_alt}}{{else}}{{title}}{{/if}}" />
-        </a>
-      </figure>
-    {{/if}}
-    <header class="entry-header">
-    <h1 class="entry-title">{{title}}</h1>
-    <div class="entry-meta">
-        {{> "entry-meta" }}
-    </div>
-    </header>
-    <div class="entry-content">
-					{{content}}
-			<ul class="talks">
-			</ul>
-			<div class="talks-more" data-limit="" data-offset="0"><span> 加载更多 </span></div>
-    </div>
-  </article>
-{{/post}}
-
-<script type="text/x-tmpl" id="tmpl-memos">
+{{!< default}} {{! Everything inside the #post tags pulls data from the post }} {{#post}} <article class="post entry ">
+	{{#if feature_image}}
+	<figure class="post-thumbnail">
+		<a class="post-thumbnail-inner" href="" {{url}}" aria-hidden="true">
+			<img src="{{img_url feature_image size=" 528"}}"
+				alt="{{#if feature_image_alt}}{{feature_image_alt}}{{else}}{{title}}{{/if}}" />
+		</a>
+	</figure>
+	{{/if}}
+	<header class="entry-header">
+		<h1 class="entry-title">{{title}}</h1>
+		<div class="entry-meta">
+			{{> "entry-meta" }}
+		</div>
+	</header>
+	<div class="entry-content">
+		{{content}}
+		<ul class="talks">
+		</ul>
+		<input type="button" id="button1" class="talks-more" data-limit="10" data-offset="0"  value="加载更多!">
+	</div>
+	</article>
+	{{/post}}
+	<script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.0/jquery.min.js"></script>
+	<script src="https://cdn.bootcdn.net/ajax/libs/blueimp-JavaScript-Templates/3.20.0/js/tmpl.min.js"></script>
+	<script type="text/x-tmpl" id="tmpl-memos">
 	{% for (var i=0; i<o.data.length; i++) { %}
 	<li class="timeline page-1">
-		<div class="talks__avatar"><img src="https://cravatar.cn/avatar/cc38267b10cc25dfc62209f8ca34589e?d=identicon" alt="" /></div>
-		<div class="talks__content">
-			<div class="talks__text">
-				<p>{%#  (o.data[i].content) %}</p>
-				<div class="talks__imgs">
-					{% if (!!o.data[i].imgs) { %}
-						{% for (var b=0; b<o.data[i].imgs.length; b++) { %} 
-							{%# o.data[i].imgs[b] %}
-						{% } %}
-					{% } %}
-				</div>
-			</div>
-			<div class="talks__meta"><small class="talks__date">{%= new Date(o.data[i].createdTs * 1000).toLocaleString() %}</small></div>
-		</div>
+		<code>{%= new Date(o.data[i].createdTs * 1000).toLocaleString() %}</code>
+		<p> {%#  (o.data[i].content) %}</p>
 	</li>
 	{% } %}
 </script>
 
+	{{!-- <div class="talks__avatar"><img src="https://cravatar.cn/avatar/cc38267b10cc25dfc62209f8ca34589e?d=identicon"
+			alt="" /></div>
+	<div class="talks__content">
+		<div class="talks__text">
+
+			<div class="talks__imgs">
+				{% if (!!o.data[i].imgs) { %}
+				{% for (var b=0; b<o.data[i].imgs.length; b++) { %} {%# o.data[i].imgs[b] %} {% } %} {% } %} </div>
+			</div>
+			<div class="talks__meta"><small class="talks__date">{%= new Date(o.data[i].createdTs *
+					1000).toLocaleString() %}</small></div>
+		</div> --}}
+
+
+		<script>
+			var url = "https://memos.1900.live/api/memo";
+			const CODE_BLOCK_REG = /```(\S*?)\s([\s\S]*?)```(\n?)/;
+			const TODO_LIST_REG = /- \[ \] ([\S ]+)(\n?)/g;
+			const DONE_LIST_REG = /- \[x\] ([\S ]+)(\n?)/g;
+			const ORDERED_LIST_REG = /(\d+)\. ([\S ]+)(\n?)/g;
+			const UNORDERED_LIST_REG = /[*-] ([\S ]+)(\n?)/g;
+			const PARAGRAPH_REG = /^([\S ]*)(\n?)/mg;
+			const TAG_REG = /#([^\s#]+?) /g;
+			const IMAGE_OLD_REG = /!\[.*?\]\(\/([a-z]\/[a-z]\/.+?)\)/g;
+			const IMAGE_REG = /!\[.*?\]\((.+?)\)/g;
+			const LINK_REG = /\[(.*?)\]\((.+?)\)/g;
+			const LINK_BILIBILI_REG = /\[(.*?)\]\((.+?)\)/g;
+			const MARK_REG = /@\[([\S ]+?)\]\((\S+?)\)/g;
+			const BOLD_REG = /\*\*([\S ]+)\*\*/g;
+			const EMPHASIS_REG = /\*([\S ]+)\*/g;
+			const PLAIN_LINK_REG = /((ht|f)tps?:\/\/[\w\-]+\.[\w\-]+[\w\-\.,@?^=%&:\/~\+#]*[\w\-\@?^=%&\/~\+#]) /g;
+			const INLINE_CODE_REG = /`([\S ]+?)`/g;
+			const PLAIN_TEXT_REG = /([\S ]+)/g;
+
+			const QUOTE_REG = /^>\s+(.+)(\n?)/mg;
+			const MARK_IMG_REG = /^(.*)(\n\!\[)/;
+
+			function getMemos(l, f) {
+				$.getJSON(url, { creatorId: 101, limit: l, offset: f }, function (data, status, xhr) {
+					data['url'] = this.url.match(/https:\/\/([^\/]+)\//i)[1];
+					$(data.data).each(function (i, d) {
+						d.content = d.content.replace(/([\u4e00-\u9fa5])([A-Za-z0-9?.,;[\]]+)/g, "$1 $2")
+							.replace(/([A-Za-z0-9?.,;[\]]+)([\u4e00-\u9fa5])/g, "$1 $2")
+							.replace(TODO_LIST_REG, "<p><span class='todo-block todo' data-value='TODO'></span>$1</p>$2")
+							.replace(DONE_LIST_REG, "<p><span class='todo-block done' data-value='DONE'>✓</span>$1</p>$2")
+							.replace(ORDERED_LIST_REG, "<p><span class='ol-block'>$1.</span>$2 $3</p>")
+							.replace(UNORDERED_LIST_REG, "<p><span class='ul-block'>•</span>$1 $2</p>")
+							.replace(QUOTE_REG, "<blockquote>$1</blockquote>")
+							.replace(CODE_BLOCK_REG, "<pre><code lang='$1'>\n$2</code></pre>$3")
+							//.replace(PARAGRAPH_REG, "<p>$1</p>$2")
+							//.replace(MARK_IMG_REG, "<p>$1</p>$2")
+							.replace(IMAGE_OLD_REG, "<img class='img old square' src='//" + data.url + "/$1' />")
+							.replace(IMAGE_REG, "<img class='img square' src='$1' />")
+							.replace(MARK_REG, "<span class='memo-link-text' data-value='$2'>$1</span>")
+							.replace(BOLD_REG, "<strong>$1</strong>")
+							.replace(EMPHASIS_REG, "<em>$1</em>")
+							.replace(LINK_REG, "<a class='link' target='_blank' rel='noreferrer' href='$2'>$1</a>")
+							//.replace(INLINE_CODE_REG, "<code>$1</code>")
+							.replace(PLAIN_LINK_REG, "<a class='link' target='_blank' rel='noreferrer' href='$1'>$1</a> ")
+							.replace(TAG_REG, "<span class='tag-span'>#$1</span> ")
+							.replace(PLAIN_TEXT_REG, "$1")
+						d.imgs = [];
+						$(d.resourceList).each(function (ii, b) {
+							d.imgs[ii] = "<img class='img' src='//" + data.url + "/o/r/" + b.id + "/" + b.filename + "' />";
+						})
+					});
+					$('.talks').append(tmpl('tmpl-memos', data))
+					if (data.data.length < 10) {
+						console.log(data.data)
+						$('.talks-more span').off()
+						$('.talks-more span').html('---我是有底线的---').addClass("over")
+					}
+				})
+
+			}
+			$(document).ready(function () {
+				var pdata = $('.talks-more').data()
+				getMemos(pdata.limit, pdata.offset);
+				$('.talks-more').click(function () {
+					$('.talks-more').data().offset = pdata.offset + 10;
+					try {
+						getMemos(pdata.limit, pdata.offset);
+					} catch (error) {
+						console.log(error)
+					}
+
+
+				})
+			});
+		</script>
