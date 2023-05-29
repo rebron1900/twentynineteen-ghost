@@ -266,14 +266,14 @@
 		}
 
 		/* delete line */
-		s{
+		s {
 			text-decoration-color: var(--element);
 		}
 
 		/* Divider */
 		hr {
 			height: 1px;
-			background-color: var(--color__border);
+			background-color: var(--border-color);
 			border: none;
 		}
 
@@ -354,7 +354,7 @@
 	.author-description {
 
 		display: inline;
-		color: var(--color__text-light);
+		color: var(--element-light);
 		font-size: $font__size-md;
 		line-height: $font__line-height-heading;
 
@@ -362,9 +362,33 @@
 			display: inline-block;
 
 			&:hover {
-				color: var(--color__link-hover);
+				color: var(--primary);
 				text-decoration: none;
 			}
 		}
+	}
+}
+
+.talks {
+	list-style: none;
+	padding: 0;
+
+	li {
+		border: solid 1px var(--border-color);
+		border-radius: var(--radius);
+		padding: 1em 1em;
+		transition: color .11s ease-in-out;
+		transition: var(--transition);
+		max-width: 700px;
+
+		&:hover {
+			border-color: var(--primary);
+			border-radius: var(--radius);
+		}
+	}
+
+	p {
+		padding: 0;
+		margin: 0;
 	}
 }
