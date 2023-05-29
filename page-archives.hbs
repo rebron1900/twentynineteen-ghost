@@ -1,63 +1,79 @@
 {{!< default}}
 
-{{!-- Everything inside the #post tags pulls data from the post --}}
-{{#post}}
-
-<header class="post-header">
-	<div class="inner">
-		<h1 class="post-title">{{{title}}}</h1>
-	</div>
-</header>
-
-<main class="content" role="main">
-	<article class="{{post_class}}">
-		<div class="inner">
-
-			<section class="post-content archives">
-				<div class="popular-wrapper">
-					<h4 class="popular-title">{{t "Topics"}}</h4>
-					<span class="popular-tags post-tags">
-						{{#get 'tags' limit='all' include='count.posts' order='count.posts desc'}}
-							{{#foreach tags}}
-								<a href='{{ url }}'>#{{ name }}: {{ count.posts }}</a>
-							{{/foreach}}
-						{{/get}}
-					</span>
-				</div>
-			{{#get "posts" limit="all" filter="visibility:public" }}
-				{{#foreach posts}}
-
-				{{!-- <div class="archive-group-month archive-group-month-{{date format="M"}} ">
-					<div class="archive-header post-label">{{date format="YYYY/MM"}}</div>
-					<div class="archive-post">
-						<div class="archive-post-title">
-						<a href="{{url}}">{{title}}<span class="post-date" title="2022/07/18 12:18:38">{{date published_at timeago="true"}}</span></a>
-						</div>
-					</div>
-				</div> --}}
+{{#post}} 
+<article class="post entry archive">
+  {{#if feature_image}}
+  <figure class="post-thumbnail">
+    <a class="post-thumbnail-inner" href="" {{url}}" aria-hidden="true">
+      <img src="{{img_url feature_image size=" 528"}}"
+        alt="{{#if feature_image_alt}}{{feature_image_alt}}{{else}}{{title}}{{/if}}" />
+    </a>
+  </figure>
+  {{/if}}
+  <header class="entry-header">
+    <h1 class="entry-title">{{title}}</h1>
+    <div class="entry-meta">
+      {{> "entry-meta" }}
+      <span class="tags-links">
+        {{> "icons/ui/comment" }}
+        <a href="#comments">参与评论</a>
+      </span>
+    </div>
+  </header>
+  <div class="entry-content">
+    {{content}}
+	<ul>
+	{{#get "posts" limit="all" filter="visibility:public" }}
+	{{#foreach posts}}
+	<div data-date='{{date format='YY'}}'><h2>{{date format="YYYY"}}</h2> <li><code>{{date format="MM/DD"}}</code> <a href="{{url}}" class="c-card-archive__url">{{title}}</a></li></div>
+	{{/foreach}}
+	{{/get}}
+	</ul>
 
 
-				<div class="c-card-archive c-card-archive--date-{{date format="M"}}">
-					<div class="c-card-archive__meta">
-					<div class="c-card-archive__date u-type-uppercase">{{date format="YYYY-MM "}}</div>
-					</div>
-
-					<div class="c-card-archive__content">
-					<div class="c-card-archive__title">
-						<time class="c-card-archive__date-mini" datetime="{{date format="YYYY-MM-DD"}}">{{date format="DD"}}：</time>
-						<a href="{{url}}" class="c-card-archive__url">{{title}}</a>
-					</div>
-					</div>
-				</div>
+  </div>
+  </article>
 
 
-				{{/foreach}}
-			{{/get}}
-			</section>
 
-		</div>
-	</article>
-</main>
+  {{#primary_author}}
+  <div class="author-bio">
+    <h2 class="author-title">
+      <span class="author-heading">
+        发布者：{{name}} </span>
+    </h2>
+    <p class="author-description">
+      {{bio}} <a class="author-link" href="{{url}}" rel="author">
+        查看更多文章 </a>
+    </p><!-- .author-description -->
+  </div>
+  {{/primary_author}}
 
-{{/post}}
 
+  <nav class="navigation post-navigation" aria-label="文章">
+    <h2 class="screen-reader-text">文章导航</h2>
+    <div class="nav-links">
+      {{#prev_post}}
+      <div class="nav-next">
+        <a href="{{url}}" rel="next">
+          <span class="meta-nav" aria-hidden="true">下一篇文章</span>
+          <span class="screen-reader-text">下一篇文章：</span>
+          <br>
+          <span class="post-title">{{title}}</span></a>
+      </div>
+      {{/prev_post}}
+
+      {{#next_post}}
+      <div class="nav-previous">
+        <a href="{{url}}" rel="next">
+          <span class="meta-nav" aria-hidden="true">上一篇文章</span>
+          <span class="screen-reader-text">上一篇文章：</span>
+          <br>
+          <span class="post-title">{{title}}</span></a>
+      </div>
+      {{/next_post}}
+    </div>
+  </nav>
+
+  {{> "posts/comments" }}
+  {{/post}}
