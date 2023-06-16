@@ -5,7 +5,7 @@ input[type="reset"],
 input[type="submit"] {
 
 	@include button-transition;
-	background: var(--primary);
+	background: var(--primary-dark);
 	border: none;
 	border-radius: 5px;
 	box-sizing: border-box;
@@ -22,6 +22,7 @@ input[type="submit"] {
 	&:hover {
 		opacity: .85;
 		cursor: pointer;
+		background-color: var(--primary-light);;
 	}
 
 	&:visited {

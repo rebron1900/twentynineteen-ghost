@@ -9,6 +9,8 @@
     grid-column-gap: 20px;
     -moz-column-gap: 20px !important;
     column-gap: 20px;
+
+    
     
     .kg-blockquote-alt, .kg-card{
         margin-block: auto;
@@ -25,6 +27,7 @@
             
             .kg-bookmark-description{
                 max-height: 100%;
+                display: block;
             }
         }
 

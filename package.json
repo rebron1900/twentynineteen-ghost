@@ -68,6 +68,10 @@
           "dark"
         ],
         "default": "light"
+      },
+      "icp_code": {
+        "type": "text",
+        "group": "homepage"
       }
     }
   },

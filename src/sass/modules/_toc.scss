@@ -1,6 +1,6 @@
-.sm-post-toc {
+.sm-post-toc,.sm-post-top {
   position: fixed;
-  bottom: 28px;
+  bottom: 50px;
   right: 28px;
   z-index: 9;
   pointer-events: none;
@@ -8,12 +8,16 @@
   transition: opacity 0.5s;
 }
 
-.sm-post-toc-btn {
+.sm-post-top {
+  bottom: 0px;
+}
+
+.sm-post-toc-btn,.sm-post-top-btn {
   position: relative;
   box-sizing: content-box;
   display: block;
-  width: 30px;
-  height: 30px;
+  width: 20px;
+  height: 20px;
   padding: 0.75rem;
   pointer-events: all;
   background: var(--surface-light);
