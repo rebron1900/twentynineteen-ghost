@@ -1,0 +1,582 @@
+{{!< default}} {{! Everything inside the #post tags pulls data from the post }} {{#post}} <article class="post entry">
+	{{#if feature_image}}
+	<figure class="post-thumbnail">
+		<a class="post-thumbnail-inner" href="" {{url}}" aria-hidden="true">
+			<img src="{{img_url feature_image size=" 528"}}"
+				alt="{{#if feature_image_alt}}{{feature_image_alt}}{{else}}{{title}}{{/if}}" />
+		</a>
+	</figure>
+	{{/if}}
+	<header class="entry-header">
+		<h1 class="entry-title">{{title}}</h1>
+		<div class="entry-meta">
+			{{> "entry-meta" }}
+		</div>
+	</header>
+	<div class="entry-content">
+		{{content}}
+		{{!-- <style>
+			.gFnzgG,
+			.gFnzgG * {
+				box-sizing: border-box
+			}
+
+			.fIuTG {
+				display: flex;
+				flex-wrap: wrap;
+				margin: 0 -2%;
+				background: 0 0;
+				line-height: 100%;
+				justify-content: center;
+			}
+
+			.dfdORB {
+				width: 150px;
+				margin: 0 2% 30px;
+				padding: 0;
+				font-size: 15px
+			}
+
+			.dfdORB a {
+				text-decoration: none !important;
+			}
+
+			.kMthTr {
+				margin-top: 12px;
+				line-height: 1.3;
+				max-height: 2.6rem;
+				overflow: hidden
+			}
+
+			.eysHZq {
+				display: flex;
+				-webkit-box-align: center;
+				align-items: center;
+				margin-top: 5px;
+				min-height: 16px;
+				line-height: 1;
+				-webkit-box-align: center;
+			}
+
+			.HPRth {
+				position: relative;
+				min-height: 87px;
+				overflow: hidden;
+				color: transparent;
+				width: 150px;
+				height: 230px;
+			}
+
+			.HPRth:hover {
+				box-shadow: rgb(48 55 66 / 30%) 0 1rem 2.1rem
+			}
+
+			.jcTaHb {
+				display: flex;
+				-webkit-box-align: center;
+				align-items: center
+			}
+
+			.lhtmRw {
+				margin-right: 1px;
+				width: 12px;
+				height: 12px;
+				color: #fccd59
+			}
+
+			.gaztka {
+				margin-right: 1px;
+				width: 12px;
+				height: 12px;
+				color: #eee
+			}
+
+			.iibjPt {
+				margin-left: 5px;
+				color: #555;
+				font-size: 14px
+			}
+
+			.jvCTkj {
+				margin-bottom: 10px
+			}
+
+			.kEoOHR {
+				display: inline-block;
+				margin-right: 15px;
+				text-decoration: none;
+				color: #157efb
+			}
+
+			.dvtjjf {
+				display: inline-block;
+				color: var(--primary);
+				text-decoration: none !important;
+				padding: 0 5px
+			}
+
+			.dvtjjf.active {
+				background: var(--border-color)
+			}
+
+			.hide {
+				display: none
+			}
+
+			.sort-by {
+				text-align: right;
+				margin-top: -15px
+			}
+
+			.sort-by-item {
+				margin-left: 10px;
+				padding: 0 5px;
+				line-height: 20px;
+				text-decoration: none !important;
+				color: var(--primary);
+			}
+
+			.sort-by-item.active {
+				background: var(--border-color)
+			}
+
+			.sort-by-item svg {
+				margin-right: 5px
+			}
+
+			.sc-hKFxyN img {
+				max-width: 100% !important;
+				height: 100% !important;
+				display: block !important;
+				vertical-align: middle !important;
+				margin: 0;
+				padding: 0;
+			}
+
+			.lazyload-wrapper {
+				height: 100%;
+			}
+
+			.dfdORB a::before {
+				content: attr(data-cm);
+				position: absolute;
+				color: red;
+				z-index: 11;
+				right: -5px;
+				top: -10px;
+			}
+
+			@media(min-width:1024px) {
+				.lg\:col-span-6 {
+					grid-column: span 6/span 6 !important
+				}
+
+				.lg\:col-start-2 {
+					grid-column-start: 2 !important
+				}
+			}
+
+			@media (max-width:550px) {
+
+				.jcTaHb,
+				.sc-bdnxRM {
+					display: none
+				}
+			}
+		</style> --}}
+		{{!--
+		<script type="text/javascript">
+			function search(e) {
+				if (e.target.dataset.value == 'book') {
+					document.querySelectorAll('.fyear .dvtjjf').forEach(item => item.classList.add('hide'));
+					document.querySelector('.genres').classList.add('hide');
+					document.querySelectorAll('.dfdORB[data-type=book]').forEach(function (item) {
+						document.querySelectorAll('.fyear .dvtjjf[data-value="' + item.dataset.year + '"]').forEach(item => item.classList.remove('hide'));
+					});
+					document.querySelectorAll(`.sc-gtsrHT`).forEach(item => item.classList.remove('active'));
+					e.target.classList.add('active')
+
+				} else if (e.target.dataset.value == 'movie') {
+					document.querySelectorAll('.fyear .dvtjjf').forEach(item => item.classList.add('hide'));
+					document.querySelector('.genres').classList.remove('hide');
+					document.querySelectorAll('.dfdORB[data-type=movie]').forEach(function (item) {
+						document.querySelectorAll('.fyear .dvtjjf[data-value="' + item.dataset.year + '"]').forEach(item => item.classList.remove('hide'));
+					});
+					document.querySelectorAll(`.sc-gtsrHT`).forEach(item => item.classList.remove('active'));
+					e.target.classList.add('active')
+				} else if (e.target.classList.contains('kEoOHR')) {
+					document.querySelector('.genres').classList.remove('hide');
+					document.querySelectorAll(`.sc-gtsrHT`).forEach(item => item.classList.remove('hide'));
+					document.querySelectorAll('.dfdORB').forEach(item => item.classList.remove('hide'));
+					document.querySelectorAll(`.sc-gtsrHT`).forEach(item => item.classList.remove('active'));
+				}
+
+				document.querySelectorAll('.dfdORB').forEach(item => item.classList.add('hide'));
+				document.querySelector(`.dvtjjf.active[data-search="${e.target.dataset.search}"]`)?.classList.remove('active');
+				if (e.target.dataset.value) {
+					e.target.classList.add('active');
+				}
+				const searchItems = document.querySelectorAll('.dvtjjf.active');
+				const attributes = Array.from(searchItems, searchItem => {
+					const property = `data-${searchItem.dataset.search}`;
+					const logic = searchItem.dataset.method === 'contain' ? '*' : '^';
+					const value = searchItem.dataset.method === 'contain' ? `${searchItem.dataset.value}` : searchItem.dataset.value;
+					return `[${property}${logic}='${value}']`;
+				});
+				const selector = `.dfdORB${attributes.join('')}`;
+				document.querySelectorAll(selector).forEach(item => item.classList.remove('hide'));
+
+
+
+
+
+			}
+			window.addEventListener('click', function (e) {
+				if (e.target.classList.contains('sc-gtsrHT')) {
+					e.preventDefault();
+					search(e);
+				}
+			});
+			function sort(e) {
+				const sortBy = e.target.dataset.order;
+				const style = document.createElement('style');
+				style.classList.add('sort-order-style');
+				document.querySelector('style.sort-order-style')?.remove();
+				document.querySelector('.sort-by-item.active')?.classList.remove('active');
+				e.target.classList.add('active');
+				if (sortBy === 'rating') {
+					const movies = Array.from(document.querySelectorAll('.dfdORB'));
+					movies.sort((movieA, movieB) => {
+						const ratingA = parseFloat(movieA.dataset.rating) || 0;
+						const ratingB = parseFloat(movieB.dataset.rating) || 0;
+						if (ratingA === ratingB) {
+							return 0;
+						}
+						return ratingA > ratingB ? -1 : 1;
+					});
+					const stylesheet = movies.map((movie, idx) => `.dfdORB[data-rating="${movie.dataset.rating}"] { order: ${idx}; }`).join('\r\n');
+					style.innerHTML = stylesheet;
+					document.body.appendChild(style);
+				}
+			}
+			window.addEventListener('click', function (e) {
+				if (e.target.classList.contains('sort-by-item')) {
+					e.preventDefault();
+					sort(e);
+				}
+			});
+		</script> --}}
+
+		<div>
+			<div>
+				<div class="explore-selectors-main">
+					<div class="explore-selector-item">
+						<div class="base-selector category-selector">
+							<div class="base-selector-title"><span data-f="f-genres">类型</span></div>
+						</div>
+					</div>
+					<div class="explore-selector-item">
+						<div class="base-selector category-selector">
+							<div class="base-selector-title"><span data-f="f-year">年代</span></div>
+
+						</div>
+					</div>
+					<div class="base-selector category-selector">
+						<div class="base-selector-title"><span data-f="f-sort">排序</span></div>
+					</div>
+					<div class="expand-card">
+						<div class="f-genres">
+						</div>
+						<div class="f-year">
+						</div>
+						<div class="f-sort sort-by">
+							<a href="javascript:void 0;" class="sort-by-item active" data-order="time">时间排序</a>
+							<a href="javascript:void 0;" class="sort-by-item" data-order="rating">评分排序</a>
+						</div>
+					</div>
+				</div>
+
+
+
+				{{!-- <div class="sc-bdnxRM genres">
+				</div>
+				<div class="sc-bdnxRM fyear">
+				</div>
+				<div class="sc-bdnxRM">
+					<a href="javascript:void 0;" class="sc-gtsrHT kEoOHR" data-search="star" data-method="equal"
+						data-value="">全部</a>
+					<a href="javascript:void 0;" class="sc-gtsrHT dvtjjf" data-search="star" data-method="equal"
+						data-value="5">五星</a>
+					<a href="javascript:void 0;" class="sc-gtsrHT dvtjjf" data-search="star" data-method="equal"
+						data-value="4">四星</a>
+					<a href="javascript:void 0;" class="sc-gtsrHT dvtjjf" data-search="star" data-method="equal"
+						data-value="3">三星</a>
+					<a href="javascript:void 0;" class="sc-gtsrHT dvtjjf" data-search="star" data-method="equal"
+						data-value="2">二星</a>
+					<a href="javascript:void 0;" class="sc-gtsrHT dvtjjf" data-search="star" data-method="equal"
+						data-value="1">一星</a>
+					<a href="javascript:void 0;" class="sc-gtsrHT dvtjjf" data-search="star" data-method="equal"
+						data-value="0">零星</a>
+				</div>
+				<div class="sc-bdnxRM type">
+					<a href="javascript:void 0;" class="sc-gtsrHT kEoOHR" data-search="type" data-value="">全部</a>
+					<a href="javascript:void 0;" class="sc-gtsrHT dvtjjf" data-search="type" data-value="movie">影视</a>
+					<a href="javascript:void 0;" class="sc-gtsrHT dvtjjf" data-search="type" data-value="book">书籍</a>
+				</div>
+				<div class="jvCTkj sort-by">
+					<a href="javascript:void 0;" class="sort-by-item active" data-order="time">时间排序</a>
+					<a href="javascript:void 0;" class="sort-by-item" data-order="rating">评分排序</a>
+				</div> --}}
+
+				<style>
+					.movies {
+						display: flex;
+						flex-wrap: wrap;
+						align-items: flex-start;
+						flex-direction: row;
+						justify-content: center;
+					}
+
+					.db-item {
+						width: 150px;
+						margin-right: 20px;
+						margin-bottom: 20px;
+						position: relative;
+						font-size: var(--x-small);
+						line-height: 20px;
+					}
+
+					.db-item-img {
+						margin-bottom: 10px;
+					}
+
+					.db-item-title a {
+						text-decoration: none !important;
+					}
+
+					.db-item-img img {
+						width: 150px;
+						height: 215px;
+						-o-object-fit: cover;
+						object-fit: cover;
+						border-radius: 4px;
+					}
+
+					.db-itme-stars {
+						color: #fccd59
+					}
+
+					.db-item-rating {
+						font-size: var(--x-small)
+					}
+
+					.db-item-title {
+						overflow: hidden;
+						text-overflow: ellipsis;
+						white-space: nowrap;
+					}
+
+					.explore-selectors-main {
+						display: flex;
+					}
+
+					.base-selector {
+						margin: 10px 10px 10px 0px;
+					}
+
+					.base-selector-title:after {
+						content: "";
+						display: block;
+						position: absolute;
+						right: 5px;
+						top: 50%;
+						transform: translateY(-50%);
+						width: 10px;
+						height: 10px;
+						background-image: url(data:image/svg+xml,\ %3Csvg%20width%3D%2210%22%20height%3D%2210%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22M1.25%203.125l3.57%203.57c.099.099.258.102.36%200l3.57-3.57%22%20stroke%3D%22%23808080%22%20stroke-width%3D%221.25%22%20fill%3D%22none%22%20fill-rule%3D%22evenodd%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%2F%3E%3C%2Fsvg%3E);
+						transform-origin: center;
+						transition: all .1s linear;
+					}
+
+					.base-selector-title {
+						padding: 3px 20px 3px 10px;
+						position: relative;
+						border-radius: 2px;
+						max-width: 10em;
+						overflow: hidden;
+						text-overflow: ellipsis;
+						white-space: nowrap;
+					}
+
+					.expand-card {
+						z-index: 10;
+						padding: 10px;
+						border-radius: 2px;
+						background-color: var(--surface);
+						position: absolute;
+						max-width: 800px;
+						border: solid 1px var(--border-color);
+						border-radius: var(--radius);
+						margin-top:48px;
+						display: none;
+					}
+
+					.expand-card > * {
+						display: none;
+					}
+
+					.f-genres a,
+					.f-year a,
+					.f-sort a {
+						text-decoration: none !important;
+						margin: 10px 10px;
+						word-break: keep-all;
+					}
+				</style>
+
+				<div class="movies">
+
+				</div>
+			</div>
+		</div>
+	</div>
+	</article>
+
+	{{/post}}
+
+	<script type="text/x-tmpl" id="tmpl-movies">
+		{% for (var i=0; i<o.douban.length; i++) { %}
+		<div 
+			class="db-item hint--top hint--medium" 
+			data-year="{%= typeof(o.douban[i].pubdate) == "undefined" ? "":o.douban[i].pubdate.substring(0,4) %}" 
+			data-star="{%= o.douban[i].star %}"
+			data-rating="{%= o.douban[i].rating %}"
+			data-genres="{%= o.douban[i].genres %}"  
+			aria-label="{%= o.douban[i].comment %}" 
+			data-type="{%= o.douban[i].type %}"
+		>
+		
+			<div class="db-item-img">
+				<div class="lazyload-wrapper">
+					{{!-- https://iph.href.lu/150x220?text=Loading&fg=666666&bg=cccccc --}}
+				<img src="{%= o.douban[i].poster %}" data-src="{%= o.douban[i].poster %}" referrer-policy="no-referrer" loading="lazy" alt="{%= o.douban[i].title %}" width="150" height="220">
+				</div>
+			</div>
+			<div class="db-item-title"><a rel="link" href="{%= o.douban[i].url %}" target="_blank" >{%= o.douban[i].title %}</a></div>
+			<div class="db-item-score">
+				<span class="db-itme-stars">
+					<svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 20.1l5.82 3.682c1.066.675 2.37-.322 2.09-1.584l-1.543-6.926 5.146-4.667c.94-.85.435-2.465-.799-2.567l-6.773-.602L13.29.89a1.38 1.38 0 0 0-2.581 0l-2.65 6.53-6.774.602C.052 8.126-.453 9.74.486 10.59l5.147 4.666-1.542 6.926c-.28 1.262 1.023 2.26 2.09 1.585L12 20.099z"></path></svg>
+				</span>
+				<span class="db-item-rating">{%= o.douban[i].rating %} · {%= typeof(o.douban[i].pubdate) == "undefined" ? "":o.douban[i].pubdate.substring(0,4) %}</span>
+			</div>
+			
+		</div>
+		{% } %}
+
+	</script>
+	<script type="text/x-tmpl" id="tmpl-genres">
+		<a href="javascript:void 0;" class="f-genres f-all" data-search="genres" data-method="contain" data-value="">全部</a>
+		{% for (var i=0; i<o.length; i++) { %}
+		<a href="javascript:void 0;" class="f-genres" data-search="genres" data-method="contain" data-value="{%= o[i] %}">{%= o[i] %}</a>
+		{% } %}
+	</script>
+	<script type="text/x-tmpl" id="tmpl-fyear">
+		<a href="javascript:void 0;" class="sc-gtsrHT kEoOHR" data-search="year" data-method="equal" data-value="">全部</a>
+		{% for (var i=0; i<o.length; i++) { %}
+		<a href="javascript:void 0;" class="sc-gtsrHT dvtjjf" data-search="year" data-method="equal" data-value="{%= o[i] %}">{%= o[i] %}</a>
+		{% } %}
+	</script>
+
+
+	<script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.0/jquery.min.js"></script>
+	<script src="https://cdn.bootcdn.net/ajax/libs/blueimp-JavaScript-Templates/3.20.0/js/tmpl.min.js"></script>
+	<script>
+		$(document).ready(function () {
+
+			var temp = { douban: [], books: [] }
+			$.when(
+				{{!-- $.getJSON('{{ @custom.douban_book }}'),
+				$.getJSON('{{ @custom.douban_movie }}')--}}
+
+			$.getJSON('https://raw.githubusercontent.com/rebron1900/doumark-action/master/data/douban/book.json'),
+			$.getJSON('https://raw.githubusercontent.com/rebron1900/doumark-action/master/data/douban/movie.json')
+
+		).done(function (b, m) {  // 或者也可以使用 ".done"
+			$(m[0]).each(function (i, v) {
+				temp.douban.push({
+					id: this.id,
+					title: this.subject.title,
+					subtitle: this.subject.card_subtitle,
+					poster: this.subject.pic.large,
+					pubdate: this.subject.pubdate[0],
+					url: this.subject.url,
+					rating: this.subject.rating.value,
+					genres: this.subject.genres.join(','),
+					star: this.subject.rating.star_count,
+					comment: this.comment,
+					tags: this.tags.join(','),
+					star_time: this.create_time,
+					type: 'movie'
+				})
+			})
+			$(b[0]).each(function () {
+				temp.douban.push({
+					id: this.id,
+					title: this.subject.title,
+					subtitle: this.subject.card_subtitle,
+					poster: this.subject.pic.large,
+					pubdate: this.subject.pubdate[0],
+					url: this.subject.url,
+					rating: this.subject.rating == null ? 0 : this.subject.rating.value,
+					genres: '',
+					star: this.subject.rating == null ? 0 : this.subject.rating.star_count,
+					comment: this.comment,
+					tags: '',
+					star_time: this.create_time,
+					type: 'book'
+				})
+			})
+
+			$('.movies').html(tmpl('tmpl-movies', temp))
+
+			var gtemp = [];
+			var gyear = [];
+			$(temp.douban).each(function () {
+				t = this.genres.split(',');
+				if (t.length > 0) {
+					$(t).each(function (i, d) {
+						if (gtemp.indexOf(d) == -1) { gtemp.push(d) }
+					});
+				} else {
+					gtemp.push(this.genres)
+				}
+
+
+				this.pubdate = typeof (this.pubdate) == "undefined" ? "" : this.pubdate.replace('年', '-').replace('月', '-')
+				var tyear = (new Date(this.pubdate).getFullYear());
+				if (gyear.indexOf(tyear) == -1) {
+					gyear.push(tyear)
+				}
+			});
+			$('.f-genres').html(tmpl('tmpl-genres', gtemp))
+			$('.f-year').html(tmpl('tmpl-fyear', gyear.sort(function (a, b) { return b - a })))
+
+
+		});
+
+
+
+
+		$(document).on('click', function(event) {
+			if (!$(event.target).closest('.base-selector-title').length) {
+				// 如果不是目标区域内的元素，则隐藏目标区域
+				$('.expand-card').hide();
+			}
+		});
+		$('.base-selector-title').click(function (e) {
+			$('.expand-card').show();
+			$('.expand-card > *').hide();
+			$('.expand-card > .'+e.currentTarget.firstElementChild.dataset.f).toggle();
+		})
+		});
+	</script>
