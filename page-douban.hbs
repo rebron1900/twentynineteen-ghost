@@ -17,6 +17,9 @@
 		{{content}}
 		<style>
 
+
+
+
 			.gFnzgG,
 			.gFnzgG * {
 				box-sizing: border-box
@@ -35,7 +38,11 @@
 				width: 150px;
 				margin: 0 2% 30px;
 				padding: 0;
-				font-size: 15px
+				font-size: 15px;
+				border: solid 1px var(--border-color);
+				padding: 5px;
+				border-radius: var(--radius);
+				transition: var(--transition);
 			}
 
 			.dfdORB a {
@@ -46,7 +53,9 @@
 				margin-top: 12px;
 				line-height: 1.3;
 				max-height: 2.6rem;
-				overflow: hidden
+				overflow: hidden;
+				text-overflow: ellipsis;
+				white-space: nowrap;
 			}
 
 			.eysHZq {
@@ -64,12 +73,10 @@
 				min-height: 87px;
 				overflow: hidden;
 				color: transparent;
-				width: 150px;
-				height: 230px;
+				height: 200px;
 			}
 
 			.HPRth:hover {
-				box-shadow: rgb(48 55 66 / 30%) 0 1rem 2.1rem
 			}
 
 			.jcTaHb {
@@ -111,13 +118,15 @@
 
 			.dvtjjf {
 				display: inline-block;
-				color: var(--primary);
 				text-decoration: none !important;
-				padding: 0 5px
+				padding: 0 5px;
+				color: var(--primary);
+				border-radius: var(--radius-small);
 			}
 
 			.dvtjjf.active {
-				background: var(--border-color)
+				background: var(--primary-dark);
+				color: var(--button-text);
 			}
 
 			.hide {
@@ -134,11 +143,13 @@
 				padding: 0 5px;
 				line-height: 20px;
 				text-decoration: none !important;
-				color:  var(--primary);
+				color: var(--primary);
+				border-radius: var(--radius-small);
 			}
 
 			.sort-by-item.active {
-				background: var(--border-color)
+				background: var(--primary-dark);
+				color: var(--button-text);
 			}
 
 			.sort-by-item svg {
@@ -146,12 +157,12 @@
 			}
 
 			.sc-hKFxyN img {
-				max-width: 100% !important;
-				height: 100% !important;
 				display: block !important;
 				vertical-align: middle !important;
 				margin: 0;
 				padding: 0;
+				width: 150px;
+				border-radius: var(--radius);
 			}
 
 			.lazyload-wrapper {
@@ -165,6 +176,15 @@
 				z-index: 11;
 				right: -5px;
 				top: -10px;
+			}
+
+			.dfdORB:hover{
+				box-shadow: var(--box-shadow);
+				border-color:var(--primary);
+			}
+			
+			.dvtjjf:hover {
+				outline: thin dotted;
 			}
 
 			@media(min-width:1024px) {
@@ -184,6 +204,8 @@
 					display: none
 				}
 			}
+		
+		
 		
 		</style>
 		<script type="text/javascript">
@@ -295,8 +317,8 @@
 					<a href="javascript:void 0;" class="sc-gtsrHT dvtjjf" data-search="type" data-value="book">书籍</a>
 				</div>
 				<div class="jvCTkj sort-by">
-					<a href="javascript:void 0;" class="sort-by-item active" data-order="time">时间排序</a>
-					<a href="javascript:void 0;" class="sort-by-item" data-order="rating">评分排序</a>
+					<a href="javascript:void 0;" class="sort-by-item active" data-order="time">观看时间排序</a>
+					<a href="javascript:void 0;" class="sort-by-item" data-order="rating">豆瓣评分排序</a>
 				</div>
 				<div class="sc-dIsUp fIuTG movies">
 				</div>
@@ -318,10 +340,11 @@
 			aria-label="{%= o.douban[i].comment %}" 
 			data-type="{%= o.douban[i].type %}"
 		>
-			<a rel="link" href="{%= o.douban[i].url %}" target="_blank" data-cm="{%= o.douban[i].comment=="" ? '':'✍️' %}">
+			<a rel="link" href="{%= o.douban[i].url %}" target="_blank" >
 			<div class="sc-hKFxyN HPRth">
-				<div class="lazyload-wrapper ">
-				<img src="{%= o.douban[i].poster %}" referrer-policy="no-referrer" loading="lazy" alt="{%= o.douban[i].title %}" width="150" height="220">
+				<div class="lazyload-wrapper">
+					{{!-- https://iph.href.lu/150x220?text=Loading&fg=666666&bg=cccccc --}}
+				<img src="{%= o.douban[i].poster %}" data-src="{%= o.douban[i].poster %}" referrer-policy="no-referrer" loading="lazy" alt="{%= o.douban[i].title %}" width="150" height="220">
 				</div>
 			</div>
 			<div class="sc-iCoGMd kMthTr">{%= o.douban[i].title %}</div>
@@ -427,6 +450,21 @@
 			});
 			$('.genres').html(tmpl('tmpl-genres', gtemp))
 			$('.fyear').html(tmpl('tmpl-fyear', gyear.sort(function (a, b) { return b - a })))
+
+			let images = document.querySelectorAll(".lazyload");
+			let observer = new IntersectionObserver(entries => {
+				entries.forEach(item => {
+					if (item.isIntersecting) {
+						item.target.src = item.target.dataset.src; // 开始加载图片,把data-src的值放到src
+						observer.unobserve(item.target); // 停止监听已开始加载的图片
+					}
+				});
+			},
+				{
+					rootMargin: "0px 0px 500px 0px" // 交叉过视图的100，才开始派发事件
+				}
+			);
+			images.forEach(item => observer.observe(item));
 		});			
 		});
 	</script>
