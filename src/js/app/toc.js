@@ -9,39 +9,6 @@ export default function toc() {
   const tocContainer = document.querySelector('.sm-post-toc');
   const tocContentContainer = document.querySelector('.sm-post-toc-contents');
 
-  if (!tocContainer || !postContainer) {
-    return;
-  }
-
-  const headings = postContainer.querySelectorAll('h2, h3, h4, h5, h6');
-
-  //   If there are fewer than 3 headings, don't show the table of contents.
-  if (headings.length < 3) {
-    tocContainer.style.display = 'none';
-    return;
-  }
-
-  tocContainer.classList.add('toc-enabled');
-
-  const btn = document.querySelector('.sm-post-toc-btn');
-
-  btn.addEventListener('click', () => {
-    tocContentContainer.classList.toggle('toc-show');
-  });
-
-  function createLink(element) {
-    element.id = element.innerText;
-    const link = document.createElement('a');
-    link.classList.add('sm-toc-link');
-    link.setAttribute('href', `#${element.id}`);
-    link.textContent = element.textContent;
-    return link;
-  }
-
-  headings.forEach((heading) => {
-    const link = createLink(heading);
-    tocContentContainer.append(link);
-  });
 
   const observerOptions = {
     root: null,
@@ -64,20 +31,45 @@ export default function toc() {
     });
   }, observerOptions);
 
-  headings.forEach((heading) => {
-    observer.observe(heading);
-  });
+  if (!tocContainer || !postContainer) {
+    return;
+  }
 
-  document.addEventListener('scroll', () => {
-    const scrollPos = getScrollProgress();
+  const headings = postContainer.querySelectorAll('h2, h3, h4, h5, h6');
 
-    btn.style.setProperty(
-      '--conic-gradient',
-      `var(--primary-light) 0deg 0%, var(--primary-light) 0deg ${
-        scrollPos * 100
-      }%, var(--surface-light) 0deg ${
-        1 - scrollPos * 100
-      }%, var(--surface-light) 0deg 360deg`,
-    );
-  });
+  //   If there are fewer than 3 headings, don't show the table of contents.
+  if (headings.length < 3) {
+    // tocContainer.style.display = 'none';
+    // return;
+  }
+
+  tocContainer.classList.add('toc-enabled');
+
+  const btn = document.querySelector('.sm-post-toc-btn');
+  if (btn != undefined) {
+
+    headings.forEach((heading) => {
+      const link = createLink(heading);
+      tocContentContainer.append(link);
+    });
+
+    headings.forEach((heading) => {
+      observer.observe(heading);
+    });
+  }
+
+  function createLink(element) {
+    element.id = element.innerText;
+    const link = document.createElement('a');
+    link.classList.add('sm-toc-link');
+    link.setAttribute('href', `#${element.id}`);
+    link.textContent = element.textContent;
+    return link;
+  }
+
+
+
+
+
+
 }

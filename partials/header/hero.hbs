@@ -1,0 +1,21 @@
+<div class="post hero entry ">
+    
+
+    {{#is "index"}}
+    {{#if @site.members_enabled}}
+    {{#unless @member}}
+    <header class="entry-header">
+        <h2 class="entry-title">
+            {{{@custom.hero_title}}}
+        </h2>
+    </header>
+    <div class="entry-content hero-content" data-portal>
+        <input type="text" class="email-field" readonly placeholder="Your Email Addrass ..." value="" name="s">
+        <button>Subscribe</span></button>
+    </div>
+    {{/unless}}
+    {{/if}}
+    {{/is}}
+
+
+</div>

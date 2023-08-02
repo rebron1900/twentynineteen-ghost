@@ -1,15 +1,20 @@
 import '../../sass/style.scss';
-import initClickHandler from './clickHandler';
-import { determineColorModeSupport } from './colorModeToggle';
-import generatePagination from './pagination';
-import initMediumZoom from './medium_zoom';
-import responsiveTableInit from './responsiveTables';
-import toc from './toc';
+import initClickHandler from './clickHandler.js';
+import generatePagination from './pagination.js';
+import initMediumZoom from './medium_zoom.js';
+import responsiveTableInit from './responsiveTables.js';
+import toc from './toc.js';
+import initPageProgress from './progress.js';
+import {initLike} from './like.js';
+import {initMemos2} from './memos.js';
+import {initCommendGV} from './comment.js';
 
 initClickHandler();
-determineColorModeSupport();
 generatePagination();
 initMediumZoom();
 responsiveTableInit();
 toc();
-
+initPageProgress();
+initLike();
+initMemos2();
+initCommendGV();

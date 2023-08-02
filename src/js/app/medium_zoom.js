@@ -1,4 +1,5 @@
 import mediumZoom from 'medium-zoom';
+import cocoMessage from 'coco-message';
 
 // Medium Zoom
 export default function initMediumZoom() {
@@ -15,7 +16,12 @@ export default function initMediumZoom() {
     ...kgImages,
     ...galleryImages,
   ];
+
+
   mediumZoom(postImages, {
     background: 'rgba(0,0,0,0.75)',
   });
 }
+
+
+

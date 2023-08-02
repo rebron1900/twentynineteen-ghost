@@ -1,12 +1,5 @@
 {{!< default}} {{! Everything inside the #post tags pulls data from the post }} {{#post}} <article class="post entry">
-	{{#if feature_image}}
-	<figure class="post-thumbnail">
-		<a class="post-thumbnail-inner" href="" {{url}}" aria-hidden="true">
-			<img src="{{img_url feature_image size=" 528"}}"
-				alt="{{#if feature_image_alt}}{{feature_image_alt}}{{else}}{{title}}{{/if}}" />
-		</a>
-	</figure>
-	{{/if}}
+	{{> "posts/feature"}}
 	<header class="entry-header">
 		<h1 class="entry-title">{{title}}</h1>
 		<div class="entry-meta">
@@ -15,6 +8,7 @@
 	</header>
 	<div class="entry-content">
 		{{content}}
+		{{> 'posts/btn'}}
 		<style>
 
 
@@ -35,11 +29,10 @@
 			}
 
 			.dfdORB {
-				width: 150px;
+				width: 160px;
 				margin: 0 2% 30px;
 				padding: 0;
 				font-size: 15px;
-				border: solid 1px var(--border-color);
 				padding: 5px;
 				border-radius: var(--radius);
 				transition: var(--transition);
@@ -74,6 +67,7 @@
 				overflow: hidden;
 				color: transparent;
 				height: 200px;
+				border-radius: var(--radius);
 			}
 
 			.HPRth:hover {
@@ -209,57 +203,6 @@
 		
 		</style>
 		<script type="text/javascript">
-			function search(e) {
-				if (e.target.dataset.value == 'book') {
-					document.querySelectorAll('.fyear .dvtjjf').forEach(item => item.classList.add('hide'));
-					document.querySelector('.genres').classList.add('hide');
-					document.querySelectorAll('.dfdORB[data-type=book]').forEach(function (item) {
-						document.querySelectorAll('.fyear .dvtjjf[data-value="' + item.dataset.year + '"]').forEach(item => item.classList.remove('hide'));
-					});
-					document.querySelectorAll(`.sc-gtsrHT`).forEach(item => item.classList.remove('active'));
-					e.target.classList.add('active')
-
-				} else if (e.target.dataset.value == 'movie') {
-					document.querySelectorAll('.fyear .dvtjjf').forEach(item => item.classList.add('hide'));
-					document.querySelector('.genres').classList.remove('hide');
-					document.querySelectorAll('.dfdORB[data-type=movie]').forEach(function (item) {
-						document.querySelectorAll('.fyear .dvtjjf[data-value="' + item.dataset.year + '"]').forEach(item => item.classList.remove('hide'));
-					});
-					document.querySelectorAll(`.sc-gtsrHT`).forEach(item => item.classList.remove('active'));
-					e.target.classList.add('active')
-				} else if (e.target.classList.contains('kEoOHR')) {
-					document.querySelector('.genres').classList.remove('hide');
-					document.querySelectorAll(`.sc-gtsrHT`).forEach(item => item.classList.remove('hide'));
-					document.querySelectorAll('.dfdORB').forEach(item => item.classList.remove('hide'));
-					document.querySelectorAll(`.sc-gtsrHT`).forEach(item => item.classList.remove('active'));
-				}
-
-				document.querySelectorAll('.dfdORB').forEach(item => item.classList.add('hide'));
-				document.querySelector(`.dvtjjf.active[data-search="${e.target.dataset.search}"]`)?.classList.remove('active');
-				if (e.target.dataset.value) {
-					e.target.classList.add('active');
-				}
-				const searchItems = document.querySelectorAll('.dvtjjf.active');
-				const attributes = Array.from(searchItems, searchItem => {
-					const property = `data-${searchItem.dataset.search}`;
-					const logic = searchItem.dataset.method === 'contain' ? '*' : '^';
-					const value = searchItem.dataset.method === 'contain' ? `${searchItem.dataset.value}` : searchItem.dataset.value;
-					return `[${property}${logic}='${value}']`;
-				});
-				const selector = `.dfdORB${attributes.join('')}`;
-				document.querySelectorAll(selector).forEach(item => item.classList.remove('hide'));
-
-
-
-
-
-			}
-			window.addEventListener('click', function (e) {
-				if (e.target.classList.contains('sc-gtsrHT')) {
-					e.preventDefault();
-					search(e);
-				}
-			});
 			function sort(e) {
 				const sortBy = e.target.dataset.order;
 				const style = document.createElement('style');
@@ -291,34 +234,9 @@
 		</script>
 		<div class="lg:col-start-2 lg:col-span-6">
 			<div class="sc-ksluID gFnzgG">
-				<div class="sc-bdnxRM genres">
-				</div>
-				<div class="sc-bdnxRM fyear">
-				</div>
-				<div class="sc-bdnxRM">
-					<a href="javascript:void 0;" class="sc-gtsrHT kEoOHR" data-search="star" data-method="equal"
-						data-value="">全部</a>
-					<a href="javascript:void 0;" class="sc-gtsrHT dvtjjf" data-search="star" data-method="equal"
-						data-value="5">五星</a>
-					<a href="javascript:void 0;" class="sc-gtsrHT dvtjjf" data-search="star" data-method="equal"
-						data-value="4">四星</a>
-					<a href="javascript:void 0;" class="sc-gtsrHT dvtjjf" data-search="star" data-method="equal"
-						data-value="3">三星</a>
-					<a href="javascript:void 0;" class="sc-gtsrHT dvtjjf" data-search="star" data-method="equal"
-						data-value="2">二星</a>
-					<a href="javascript:void 0;" class="sc-gtsrHT dvtjjf" data-search="star" data-method="equal"
-						data-value="1">一星</a>
-					<a href="javascript:void 0;" class="sc-gtsrHT dvtjjf" data-search="star" data-method="equal"
-						data-value="0">零星</a>
-				</div>
-				<div class="sc-bdnxRM type">
-					<a href="javascript:void 0;" class="sc-gtsrHT kEoOHR" data-search="type" data-value="">全部</a>
-					<a href="javascript:void 0;" class="sc-gtsrHT dvtjjf" data-search="type" data-value="movie">影视</a>
-					<a href="javascript:void 0;" class="sc-gtsrHT dvtjjf" data-search="type" data-value="book">书籍</a>
-				</div>
 				<div class="jvCTkj sort-by">
-					<a href="javascript:void 0;" class="sort-by-item active" data-order="time">观看时间排序</a>
-					<a href="javascript:void 0;" class="sort-by-item" data-order="rating">豆瓣评分排序</a>
+					<a href="javascript:void 0;" class="sort-by-item active  hint--bottom" aria-label="按我的观看时间排序" data-order="time">观看时间排序</a>
+					<a href="javascript:void 0;" class="sort-by-item hint--bottom" aria-label="按我的评分排序" data-order="rating">评分排序</a>
 				</div>
 				<div class="sc-dIsUp fIuTG movies">
 				</div>
@@ -358,7 +276,7 @@
 					</svg>
 					{% } %}
 				</span>
-				<span class="sc-pNWdM iibjPt">{%= o.douban[i].rating %}</span>
+				<span class="sc-pNWdM iibjPt">我评：{%= o.douban[i].rating %}</span>
 			</div>
 			</a>
 		</div>
@@ -388,68 +306,46 @@
 				{{!-- $.getJSON('{{ @custom.douban_book }}'),
 				$.getJSON('{{ @custom.douban_movie }}')--}}
 
-			$.getJSON('https://raw.githubusercontent.com/rebron1900/doumark-action/master/data/douban/book.json'),
-			$.getJSON('https://raw.githubusercontent.com/rebron1900/doumark-action/master/data/douban/movie.json')
+			$.getJSON('https://raw.githubusercontent.com/rebron1900/doumark-action/master/data/neodb/book.json'),
+			$.getJSON('https://raw.githubusercontent.com/rebron1900/doumark-action/master/data/neodb/movie.json')
 
 		).done(function (b, m) {  // 或者也可以使用 ".done"
-			$(m[0]).each(function (i, v) {
+			$(m[0].data).each(function (i, v) {
 				temp.douban.push({
-					id: this.id,
-					title: this.subject.title,
-					subtitle: this.subject.card_subtitle,
-					poster: this.subject.pic.large,
-					pubdate: this.subject.pubdate[0],
-					url: this.subject.url,
-					rating: this.subject.rating.value,
-					genres: this.subject.genres.join(','),
-					star: this.subject.rating.star_count,
-					comment: this.comment,
+					id: this.item.uuid,
+					title: this.item.title,
+					subtitle: this.item.display_title,
+					poster: this.item.cover_image_url,
+					pubdate: this.created_time,
+					url: 'https://neodb.social' + this.item.url,
+					rating: this.rating_grade == null ? '无':this.rating_grade/2,
+					genres: this.tags.join(','),
+					star: this.item.rating / 2,
+					comment: this.comment_text,
 					tags: this.tags.join(','),
-					star_time: this.create_time,
+					star_time: this.created_time,
 					type: 'movie'
 				})
 			})
-			$(b[0]).each(function () {
+			$(b[0].data).each(function () {
 				temp.douban.push({
-					id: this.id,
-					title: this.subject.title,
-					subtitle: this.subject.card_subtitle,
-					poster: this.subject.pic.large,
-					pubdate: this.subject.pubdate[0],
-					url: this.subject.url,
-					rating: this.subject.rating == null ? 0 : this.subject.rating.value,
-					genres: '',
-					star: this.subject.rating == null ? 0 : this.subject.rating.star_count,
-					comment: this.comment,
-					tags: '',
-					star_time: this.create_time,
+					id: this.item.uuid,
+					title: this.item.title,
+					subtitle: this.item.display_title,
+					poster: this.item.cover_image_url,
+					pubdate: this.created_time,
+					url: 'https://neodb.social' + this.item.url,
+					rating: this.rating_grade == null ? '无':this.rating_grade/2,
+					genres: this.tags.join(','),
+					star: this.item.rating / 2,
+					comment: this.comment_text,
+					tags: this.tags.join(','),
+					star_time: this.created_time,
 					type: 'book'
 				})
 			})
 
 			$('.movies').html(tmpl('tmpl-movies', temp))
-
-			var gtemp = [];
-			var gyear = [];
-			$(temp.douban).each(function () {
-				t = this.genres.split(',');
-				if (t.length > 0) {
-					$(t).each(function (i, d) {
-						if (gtemp.indexOf(d) == -1) { gtemp.push(d) }
-					});
-				} else {
-					gtemp.push(this.genres)
-				}
-
-
-				this.pubdate = typeof (this.pubdate) == "undefined" ? "" : this.pubdate.replace('年', '-').replace('月', '-')
-				var tyear = (new Date(this.pubdate).getFullYear());
-				if (gyear.indexOf(tyear) == -1) {
-					gyear.push(tyear)
-				}
-			});
-			$('.genres').html(tmpl('tmpl-genres', gtemp))
-			$('.fyear').html(tmpl('tmpl-fyear', gyear.sort(function (a, b) { return b - a })))
 
 			let images = document.querySelectorAll(".lazyload");
 			let observer = new IntersectionObserver(entries => {

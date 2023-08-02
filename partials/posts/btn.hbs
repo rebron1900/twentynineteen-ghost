@@ -1,0 +1,32 @@
+<div aria-hidden="true" class="page-progress">
+  <div style="transform: translateY(0%);" class="page-line"></div>
+</div>
+
+<div class="sm-post-toc">
+  {{#has tag="#post-toc"}}
+  <div class="sm-post-toc-contents">
+  </div>
+  <button class="sm-post-toc-btn hint--left" aria-label="打开TOC">
+    {{> "icons/ui/toc" }}
+    {{> "icons/ui/close" }}
+  </button>
+  {{/has}}
+  <button class="sm-post-btn sm-post-top-btn hint--left" class="" aria-label="回到顶部">
+    {{> "icons/ui/top" }}
+  </button>
+  {{#is "post,page"}}
+  <button class="sm-post-btn hint--left umi_like_btn" data-like="0" aria-label="一共有 0 人喜欢了本文章">
+    {{> "icons/ui/love" }}
+    <span class="umi_like_num">0</span>
+  </button>
+  {{/is}}
+  <button class="sm-post-btn hint--left color-mode " aria-label="切换颜色">
+    {{> "icons/ui/moon" }}
+  </button>
+  <button class="sm-post-btn hint--left" data-portal aria-label="订阅管理">
+    {{> "icons/ui/sub" }}
+  </button>
+  <button class="sm-post-btn hint--left" data-ghost-search aria-label="搜索">
+    {{> "icons/ui/search" }}
+  </button>
+</div>

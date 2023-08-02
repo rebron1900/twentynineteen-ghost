@@ -21,5 +21,14 @@
         }
     }
 
+    @include mediamax(mobile){
+        .tk-avatar{
+            display: none;
+        }
+        .tk-tag{
+            position: initial !important;
+        }
+    }
+
 
 }

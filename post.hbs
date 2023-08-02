@@ -2,38 +2,22 @@
 {{!< default}} 
 {{#post}} 
 <article class="post entry">
-  {{#if feature_image}}
-  <figure class="post-thumbnail">
-    <a class="post-thumbnail-inner" href="" {{url}}" aria-hidden="true">
-      <img src="{{img_url feature_image size=" 528"}}"
-        alt="{{#if feature_image_alt}}{{feature_image_alt}}{{else}}{{title}}{{/if}}" />
-    </a>
-  </figure>
-  {{/if}}
+  {{> "posts/feature"}}
   <header class="entry-header">
     <h1 class="entry-title">{{title}}</h1>
     <div class="entry-meta">
       {{> "entry-meta" }}
       <span class="tags-links">
         {{> "icons/ui/comment" }}
-        <a href="#comments">参与评论</a>
+        <a href="#comments" class="hint--bottom" aria-label="点击参与评论">参与评论</a>
       </span>
     </div>
   </header>
   <div class="entry-content">
     {{content}}
-
-
-    {{#has tag="#post-toc"}}
-    <div class="sm-post-toc">
-        <div class="sm-post-toc-contents">
-        </div>
-        <button class="sm-post-toc-btn">
-            {{> "icons/ui/toc" }}
-            {{> "icons/ui/close" }}
-        </button>
+    {{> 'posts/btn'}}
     </div>
-    {{/has}}
+    
     
     {{!-- <div class="sm-post-top">
         <button class="sm-post-top-btn">

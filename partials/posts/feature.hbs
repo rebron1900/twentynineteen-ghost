@@ -1,0 +1,21 @@
+{{#if @custom.enable_feature}}
+{{#if feature_image}}
+<figure class="post-thumbnail">
+    <a class="post-thumbnail-inner" href="#" aria-hidden="true">
+        <img src="{{img_url feature_image size=" 528"}}"
+            alt="{{#if feature_image_alt}}{{feature_image_alt}}{{else}}{{title}}{{/if}}" />
+    </a>
+</figure>
+{{/if}}
+{{else}}
+{{#has tag = '#feature_img'}}
+{{#if feature_image}}
+<figure class="post-thumbnail">
+    <a class="post-thumbnail-inner" href="#" aria-hidden="true">
+        <img src="{{img_url feature_image size=" 528"}}"
+            alt="{{#if feature_image_alt}}{{feature_image_alt}}{{else}}{{title}}{{/if}}" />
+    </a>
+</figure>
+{{/if}}
+{{/has}}
+{{/if}}

@@ -36,3 +36,7 @@
 #content[tabindex="-1"]:focus {
 	outline: 0;
 }
+
+.hint--left:after,.hint--bottom:after,.hint--top:after {
+    border-radius: var(--radius-small);
+}

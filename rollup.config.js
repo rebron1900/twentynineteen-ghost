@@ -37,10 +37,10 @@ const css = postcss({
         atImport(),
         postcssPresetEnv({
             features: {
-              'custom-properties': false,
-              'logical-properties-and-values': false,
+                'custom-properties': false,
+                'logical-properties-and-values': false,
             },
-          }),
+        }),
     ],
     minimize: true,
 })
@@ -61,10 +61,6 @@ export default defineConfig([{
     ]
 }, {
     input: 'src/js/app/syntax-highlighting.js',
-    output,
-    plugins,
-}, {
-    input: 'src/js/post/post.js',
     output,
     plugins,
 }]);

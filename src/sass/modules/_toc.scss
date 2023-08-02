@@ -1,57 +1,125 @@
-.sm-post-toc,.sm-post-top {
+.page-progress {
+  background-color: var(--border-color-accent);
+  bottom: 260px;
+  display: flex;
+  flex-direction: column;
+  height: calc(50vh - 51px);
+  max-height: 425px;
+  opacity: .6;
+  overflow: hidden;
   position: fixed;
-  bottom: 50px;
-  right: 28px;
-  z-index: 9;
-  pointer-events: none;
+  right: 64px;
+  width: 1px;
+  min-width: auto !important;
+
+  .page-line{
+    background-color: var(--element-dark);
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: -100%;
+    width: 1px;
+  }
+
+  @include mediamax(tablet) {
+    display: none;
+  }
+}
+
+
+.sm-post-toc {
+  bottom: 30px;
   isolation: isolate;
-  transition: opacity 0.5s;
+  pointer-events: none;
+  position: fixed;
+  right: 50px;
+  transition: opacity .5s;
+  z-index: 9;
+
+  @include mediamax(mobile) {
+    bottom: 0px;
+    right: 15px;
+  }
 }
 
-.sm-post-top {
-  bottom: 0px;
-}
-
-.sm-post-toc-btn,.sm-post-top-btn {
+.sm-post-toc-btn,
+.sm-post-btn {
+  margin-bottom: 0.3rem;
   position: relative;
   box-sizing: content-box;
-  display: block;
+  display: block !important;
   width: 20px;
   height: 20px;
-  padding: 0.75rem;
+  padding: 0.2rem;
   pointer-events: all;
-  background: var(--surface-light);
+  background: transparent;
   border-radius: 50%;
   box-shadow: 0 4px 1rem hsl(var(--primary-h) var(--saturation) 9% / 10%);
   transition: color var(--transition);
   margin-right: 0px;
   margin-left: auto;
+  line-height: 0;
   --conic-gradient: var(--surface-light) 0deg 0%, var(--surface-light) 0deg 100%;
 }
 
-.sm-post-toc-btn:before {
-  position: absolute;
-  inset: -3px;
-  z-index: -1;
-  content: '';
-  background-image: conic-gradient(var(--conic-gradient));
-  border-radius: 50%;
-  opacity: 0.5;
-  transition: background-image var(--transition);
-}
 
 .sm-post-toc-btn:hover,
 .sm-post-toc-btn:focus-visible,
 .sm-post-toc-btn:focus {
   color: var(--primary);
-  opacity:100;
+  opacity: 100;
 }
 
-.sm-post-toc-btn svg {
-  width: 100%;
-  height: 100%;
-  color: var(--element);
-  fill: currentcolor;
+.sm-post-toc {
+
+  button,
+  svg {
+
+    color: var(--element);
+    fill: currentcolor;
+  }
+
+  .sm-post-toc-btn{
+    @include mediamax(mobile) {
+      display: none !important;
+    }
+  }
+
+  .umi_like_btn {
+    color: var(--ghost-accent-color);
+  }
+
+  .umi_like_btn>svg {
+    color: var(--ghost-accent-color);
+    width: 20px;
+    height: 23px;
+  }
+
+  .umi_like_btn[data-like="0"] {
+    background-color: transparent;
+    color: var(--element);
+  }
+
+
+  .umi_like_btn[data-like="0"]>svg {
+    color: var(--element);
+  }
+
+  .umi_like_btn[data-like="0"]>span {
+    display: none;
+  }
+
+  .umi_like_btn>span {
+    color: var(--surface);
+    font-size: 10px;
+    left: 8px;
+    line-height: normal;
+    overflow: hidden;
+    position: absolute;
+    text-align: center;
+    top: 7px;
+    width: 13px;
+  }
 }
 
 .sm-post-toc-contents {
@@ -66,9 +134,7 @@
   overflow-y: auto;
   pointer-events: none;
   background: var(--surface-light);
-  filter: drop-shadow(
-    0 4px 1rem hsl(var(--primary-h) var(--saturation) 9% / 10%)
-  );
+  filter: drop-shadow(0 4px 1rem hsl(var(--primary-h) var(--saturation) 9% / 10%));
   border-radius: var(--radius);
   opacity: 0;
   transition: scale 0.2s ease-out, opacity 0.2s 0.1s ease-out,
@@ -153,10 +219,10 @@
   display: none;
 }
 
-.toc-show ~ .sm-post-toc-btn .sm-toc-icon-close {
+.toc-show~.sm-post-toc-btn .sm-toc-icon-close {
   display: initial;
 }
 
-.toc-show ~ .sm-post-toc-btn .sm-toc-icon {
+.toc-show~.sm-post-toc-btn .sm-toc-icon {
   display: none;
 }

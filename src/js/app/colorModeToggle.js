@@ -1,8 +1,4 @@
-/*
- * Color mode toggle
- */
-
-export function toggleColorMode(color) {
+export default function toggleColorMode(color) {
   const commentsIframe = document.querySelector(
     'iframe[title="comments-frame"]',
   );
@@ -13,21 +9,7 @@ export function toggleColorMode(color) {
   }
 
   document.documentElement.setAttribute('data-color-pref', color);
+  document.documentElement.setAttribute('class',color);
   localStorage.setItem('pref', color);
+
 }
-
-export function determineColorModeSupport() {
-  const colorPrefButtons = document.querySelectorAll(
-    '.dark-mode, .light-mode',
-  );
-
-  const hasSupport = window.CSS && CSS.supports('color', 'var(--primary)');
-
-  // If the browser doesn't support custom settings, hide buttons
-  if (!hasSupport) {
-    colorPrefButtons.forEach((e) => {
-      e.style.display = 'none';
-    });
-  }
-}
-

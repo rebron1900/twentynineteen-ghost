@@ -3,11 +3,13 @@ html {
 }
 
 ::-moz-selection {
-	background-color: var(--primary);
+	background-color: var(--ghost-accent-color);
+	color:white
 }
 
 ::selection {
-	background-color: var(--primary);
+	background-color: var(--ghost-accent-color);
+	color:white
 }
 
 *,

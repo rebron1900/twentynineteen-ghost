@@ -4,7 +4,7 @@
 
 .links {
     display: grid !important;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(1, 1fr);
     padding-top: 50px !important;
     grid-column-gap: 20px;
     -moz-column-gap: 20px !important;
@@ -23,11 +23,10 @@
         
 
         .kg-bookmark-content {
-            height: 6em;
+            height: 5.5em;
             
             .kg-bookmark-description{
                 max-height: 100%;
-                display: block;
             }
         }
 
@@ -54,8 +53,19 @@
         }
     }
 
-    @media (max-width: 900px) {
+
+    @include media(tablet){
         grid-template-columns: repeat(2, 1fr);
+        padding-top: 30px;
+    }
+
+    @include media(desktop){
+        grid-template-columns: repeat(4, 1fr);
+        padding-top: 30px;
+    }
+
+    @include media(wide){
+        grid-template-columns: repeat(5, 1fr);
         padding-top: 30px;
     }
 }
